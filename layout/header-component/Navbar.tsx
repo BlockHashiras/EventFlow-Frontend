@@ -15,10 +15,9 @@ import { Community, Events, Resources } from "./NavItems";
 
 
 export const Navbar = () => {
-    const {isOpen, onClose, onOpen} = useDisclosure()
     return (
         <>
-            <Flex justifyContent="space-between" color="blackAlpha.700">
+            <Flex justifyContent="space-between" color="whiteAlpha.900">
                 <Button className="nav-button"  variant='unstyled' mx="2" p="0 8px">Home</Button>
                 <Button className="nav-button"  variant='unstyled' mx="2" p="0 8px">About</Button>
                 <Events />
@@ -35,15 +34,15 @@ export const NavAuth = () => {
 
     return (
         <>
-            <Flex justifyContent="space-between" color="blackAlpha.700" pt="0.2rem">
+            <Flex justifyContent="space-between" pt="0.2rem">
                 <Menu isOpen={isOpen}>
-                    <MenuButton mr='5' fontSize="3xl" onMouseEnter={onOpen} onMouseLeave={onClose}><CgProfile /></MenuButton>
-                    <MenuList bg='purple.100' boxShadow="2xl" borderRadius="10px"  mt="-1.5" onMouseEnter={onOpen} onMouseLeave={onClose}>
-                        <MenuItem _hover={{"backgroundColor": "#B794F4"}} icon={<CgProfile />}> Profile</MenuItem>
-                        <MenuItem _hover={{"backgroundColor": "#B794F4"}} icon={<AiFillPieChart />}>Portfolio</MenuItem>
+                    <MenuButton color="whiteAlpha.900" mr='5' fontSize="3xl" onMouseEnter={onOpen} onMouseLeave={onClose}><CgProfile /></MenuButton>
+                    <MenuList bg='purple.100' boxShadow="2xl" borderRadius="10px"  mt="-1" onMouseEnter={onOpen} onMouseLeave={onClose}>
+                        <MenuItem color="blackAlpha.700" _hover={{"backgroundColor": "#B794F4"}} icon={<CgProfile />}> Profile</MenuItem>
+                        <MenuItem color="blackAlpha.700" _hover={{"backgroundColor": "#B794F4"}} icon={<AiFillPieChart />}>Portfolio</MenuItem>
                     </MenuList> 
                 </Menu>
-                <Button variant='solid' colorScheme='purple' p="0 20px" letterSpacing="4px" ml="5">Connect</Button>
+                <Button variant='solid' p="0 20px" letterSpacing="4px" ml="5" colorScheme='pink'>Connect</Button>
             </Flex>
         </>
     )

@@ -21,7 +21,7 @@ const MainLayout = ({children}: IProps) =>{
         </Head>
         <Box
          w="100%"
-         minH="100vh"
+        //  minH="100vh"
         >
             <MainHeader />
             {children}

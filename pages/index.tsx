@@ -1,10 +1,19 @@
 import React from 'react'
-import { Box } from '@chakra-ui/react'
+import { 
+  Box,
+  Text
+} from '@chakra-ui/react'
 
 const index = () => {
   return (
     <>
-      <Box>something</Box>
+      <Box
+       className='index-header'
+       width="100%"
+       height="100vh"
+      >
+        <Text className="index-text" id="text3d">EVENTFLOW</Text>
+      </Box>
     </>
   )
 }
