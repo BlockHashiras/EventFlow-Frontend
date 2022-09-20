@@ -25,7 +25,6 @@ const MainLayout = ({children}: IProps) =>{
         >
             <MainHeader />
             {children}
-            <Footer />
         </Box>
         
         </>

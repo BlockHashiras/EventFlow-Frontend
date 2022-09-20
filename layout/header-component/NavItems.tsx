@@ -26,11 +26,11 @@ export const Events = () => {
                 >
                 Event
             </MenuButton>
-            <MenuList mt="-2" onMouseEnter={onOpen} onMouseLeave={onClose}>
-                <MenuItem>Top Event</MenuItem>
-                <MenuItem>Latest Event</MenuItem>
-                <MenuItem>All Events</MenuItem>
-                <MenuItem>Event Near You</MenuItem>
+            <MenuList bg='purple.100' boxShadow="2xl" borderRadius="10px" mt="-2" onMouseEnter={onOpen} onMouseLeave={onClose}>
+                <MenuItem _hover={{"backgroundColor": "#B794F4"}}>Top Event</MenuItem>
+                <MenuItem _hover={{"backgroundColor": "#B794F4"}}>Latest Event</MenuItem>
+                <MenuItem _hover={{"backgroundColor": "#B794F4"}}>All Events</MenuItem>
+                <MenuItem _hover={{"backgroundColor": "#B794F4"}}>Event Near You</MenuItem>
             </MenuList>
         </Menu>
     );
@@ -52,12 +52,12 @@ export const Resources = () => {
                 >
                 Resources
             </MenuButton>
-            <MenuList mt="-2" onMouseEnter={onOpen} onMouseLeave={onClose}>
-                <MenuItem>Learn</MenuItem>
-                <MenuItem>Blog</MenuItem>
-                <MenuItem>Docs</MenuItem>
-                <MenuItem>Newsletter</MenuItem>
-                <MenuItem>Help Center</MenuItem>
+            <MenuList bg='purple.100' boxShadow="2xl" borderRadius="10px" mt="-2" onMouseEnter={onOpen} onMouseLeave={onClose}>
+                <MenuItem _hover={{"backgroundColor": "#B794F4"}}>Learn</MenuItem>
+                <MenuItem _hover={{"backgroundColor": "#B794F4"}}>Blog</MenuItem>
+                <MenuItem _hover={{"backgroundColor": "#B794F4"}}>Docs</MenuItem>
+                <MenuItem _hover={{"backgroundColor": "#B794F4"}}>Newsletter</MenuItem>
+                <MenuItem _hover={{"backgroundColor": "#B794F4"}}>Help Center</MenuItem>
             </MenuList>
         </Menu>
     )
@@ -80,11 +80,11 @@ export const Community = () => {
                 >
                 Community
             </MenuButton>
-            <MenuList mt="-2" onMouseEnter={onOpen} onMouseLeave={onClose}>
-                <MenuItem icon={<BsTwitter />}>Twitter</MenuItem>
-                <MenuItem icon={<BsTelegram />}>Telegram</MenuItem>
-                <MenuItem icon={<FaDiscord />}>Discord</MenuItem>
-                <MenuItem icon={<AiFillInstagram />}>Instagram</MenuItem>
+            <MenuList bg='purple.100' boxShadow="2xl" borderRadius="10px" mt="-2" onMouseEnter={onOpen} onMouseLeave={onClose}>
+                <MenuItem _hover={{"backgroundColor": "#B794F4"}} icon={<BsTwitter />}>Twitter</MenuItem>
+                <MenuItem _hover={{"backgroundColor": "#B794F4"}} icon={<BsTelegram />}>Telegram</MenuItem>
+                <MenuItem _hover={{"backgroundColor": "#B794F4"}} icon={<FaDiscord />}>Discord</MenuItem>
+                <MenuItem _hover={{"backgroundColor": "#B794F4"}} icon={<AiFillInstagram />}>Instagram</MenuItem>
             </MenuList>
         </Menu>
     )
