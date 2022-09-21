@@ -29,10 +29,10 @@ export const DesktopHeader = () => {
              position="fixed"
              w="100%"
              zIndex={5}
-             sx={navbarScroll? {"backgroundColor": "rgba(35, 20, 27, 0.9)", "boxShadow": "0px 15px 50px -15px #111"}: {"backgroundColor": "transparent"}}
+             sx={navbarScroll? {"backgroundColor": "#d8b3f2", "boxShadow": "0px 15px 50px -15px #111"}: {"backgroundColor": "transparent"}}
             >
                 <GridItem colSpan={1} >
-                    <Text letterSpacing="0.2rem" fontSize="2xl" fontWeight="bold" py="0.2rem" backgroundClip="text" bgGradient='linear(to-br, purple.500, red.400)'>
+                    <Text letterSpacing="0.2rem" fontSize="2xl" fontWeight="bold" py="0.2rem" backgroundClip="text" bgGradient='linear(to-br, purple.700, pink.600, red.900 70%)'>
                         EVENTFLOW
                     </Text>
                 </GridItem>

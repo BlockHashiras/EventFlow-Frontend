@@ -20,15 +20,15 @@ a {
   border: 1px solid transparent;
 }
 .nav-button:hover{
-  border: 1px solid #c1a9fa;
-  color: #c1a9fa;
+  border: 1px solid #9268f3;
+  color: #7d50e7;
 }
 .nav-button:active{
-  border: 1px solid #c1a9fa;
-  color: #c1a9fa;
+  border: 1px solid #9268f3;
+  color: #7d50e7;
 }
 .nav-list {
-  background-color: #c1a9fa;
+  background-color: #9268f3;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -38,64 +38,18 @@ a {
   body {
     color: white;
     background: black;
+    /* color: #A4FFA4; */
   }
 }
 
 
 /* Index design */
 
-.index-header {
-  background: rgba(206,188,155,1);
-  background: linear-gradient(135deg, rgb(42, 25, 33) 0%, rgb(85, 50, 65) 51%,  rgb(206, 155, 155) 100%);
-  overflow-x: hidden;
-}
-
-.index-text {
-  width: 100%;
-  margin: 0 auto 0 auto;
-  font-family: 'Lato', sans-serif;
-  line-height: 280px;
-  font-size: 8rem;
-  padding: 80px 50px;
-  text-align: center;
-}
-
-/* Addition of light */
-
-.index-text::before {
-  content:"";
-  width: 70%;
-  height: 750px;
-  position: absolute;
-  top: -200px;
-  left: 18rem;
-  transform: rotate(55deg);
-  background: rgba(206,188,155,.7);
-  background: linear-gradient(to right, rgba(206, 155, 155, 0.7) 0%, rgba(42, 25, 30, 0) 65%);
-}
-
-#text3d {
-  color: #70869d;
-  letter-spacing: .0em;
-  text-shadow: 
-    -1px -1px 1px #efede3, 
-    0px 1px 0 #2e2e2e, 
-    0px 2px 0 #2c2c2c, 
-    0px 3px 0 #2a2a2a, 
-    0px 4px 0 #282828, 
-    0px 5px 0 #262626, 
-    0px 6px 0 #242424, 
-    0px 7px 0 #222, 
-    0px 8px 0 #202020, 
-    0px 9px 0 #1e1e1e, 
-    0px 10px 0 #1c1c1c, 
-    0px 11px 0 #1a1a1a, 
-    0px 12px 0 #181818, 
-    0px 13px 0 #161616, 
-    0px 14px 0 #141414, 
-    0px 15px 0 #121212,
-    2px 20px 5px rgba(0, 0, 0, 0.9),
-    5px 23px 5px rgba(0, 0, 0, 0.3),
-    8px 27px 8px rgba(0, 0, 0, 0.5),
-    8px 28px 35px rgba(0, 0, 0, 0.9);
+.index-header{
+  background-color: white;
+  background-image:
+   radial-gradient(circle at 0% 10%, #e7cbfc, white 20%, 40%, transparent),
+   radial-gradient(circle at 100% 50%, #e0c0f8, white 20%, 25%, transparent),
+   radial-gradient(100% 100% at 50% 5%, #A4FFA4, white 20%, 20%, transparent),
+   radial-gradient(150% 100% at 50% 90%, #A4FFA4, white 20%);
 }

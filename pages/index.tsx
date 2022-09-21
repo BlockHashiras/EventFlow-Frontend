@@ -9,10 +9,11 @@ const index = () => {
     <>
       <Box
        className='index-header'
+       p='5rem 4rem'
        width="100%"
        height="100vh"
       >
-        <Text className="index-text" id="text3d">EVENTFLOW</Text>
+        
       </Box>
     </>
   )
