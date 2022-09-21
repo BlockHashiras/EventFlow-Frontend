@@ -9,7 +9,7 @@ const index = () => {
     <>
       <Box
        className='index-header'
-       p='5rem 4rem'
+       p='5rem 6rem'
        width="100%"
        height="100vh"
       >

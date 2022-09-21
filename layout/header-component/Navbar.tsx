@@ -11,14 +11,15 @@ import {
 } from "@chakra-ui/react"
 import { CgProfile } from "react-icons/cg";
 import { AiFillPieChart } from "react-icons/ai"
+import { IoMdMoon } from "react-icons/io"
 import { Community, Events, Resources } from "./NavItems";
 
 
 export const Navbar = () => {
     return (
         <>
-            <Flex justifyContent="space-between" color="purple.900">
-                <Button className="nav-button"  variant='unstyled' mx="2" p="0 8px">Home</Button>
+            <Flex justifyContent="space-between" color="purple.900" fontFamily='Lato' fontWeight="bold">
+                <Button className="nav-button"  variant='unstyled' mx="2" p="0 8px" fontFamily='Lato'>Home</Button>
                 <Button className="nav-button"  variant='unstyled' mx="2" p="0 8px">About</Button>
                 <Events />
                 <Button className="nav-button"  variant='unstyled' mx="2" p="0 8px">Create</Button>
@@ -34,15 +35,16 @@ export const NavAuth = () => {
 
     return (
         <>
-            <Flex justifyContent="space-between" pt="0.2rem">
+            <Flex justifyContent="space-between" pt="0.2rem" fontFamily='Lato'>
+                <Button variant='unstyled' mr='5' fontSize='3xl'><IoMdMoon /></Button>
                 <Menu isOpen={isOpen}>
                     <MenuButton color="purple.900" mr='5' fontSize="3xl" onMouseEnter={onOpen} onMouseLeave={onClose}><CgProfile /></MenuButton>
                     <MenuList bg='purple.100' boxShadow="2xl" borderRadius="10px"  mt="-1.5" onMouseEnter={onOpen} onMouseLeave={onClose}>
-                        <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} icon={<CgProfile />}> Profile</MenuItem>
-                        <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} icon={<AiFillPieChart />}>Portfolio</MenuItem>
+                        <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<CgProfile />}> Profile</MenuItem>
+                        <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<AiFillPieChart />}>Portfolio</MenuItem>
                     </MenuList> 
                 </Menu>
-                <Button variant='solid' p="0 20px" letterSpacing="4px" ml="5" bg='#530689' color="white">Connect</Button>
+                <Button _hover={{"backgroundColor": "#02ba7d"}} _active={{"backgroundColor": "#02ba7d"}} variant='solid' p="0 20px" letterSpacing="4px" ml="5" bg='#02ba7d' color="purple.900">Connect</Button>
             </Flex>
         </>
     )

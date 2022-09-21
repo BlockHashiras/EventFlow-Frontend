@@ -25,14 +25,14 @@ export const DesktopHeader = () => {
             <Grid
              templateColumns='repeat(5, 1fr)'
              gap={4}
-             padding="0.5rem 4rem"
+             padding="0.5rem 6rem"
              position="fixed"
              w="100%"
              zIndex={5}
-             sx={navbarScroll? {"backgroundColor": "#d8b3f2", "boxShadow": "0px 15px 50px -15px #111"}: {"backgroundColor": "transparent"}}
+             sx={navbarScroll? {"backgroundColor": "white", "boxShadow": "0px 15px 50px -15px #111"}: {"backgroundColor": "transparent"}}
             >
                 <GridItem colSpan={1} >
-                    <Text letterSpacing="0.2rem" fontSize="2xl" fontWeight="bold" py="0.2rem" backgroundClip="text" bgGradient='linear(to-br, purple.700, pink.600, red.900 70%)'>
+                    <Text letterSpacing="0.2rem" fontSize="2xl" fontFamily='Poppins' fontWeight="bold" py="0.2rem" backgroundClip="text" bgGradient='linear(to-br, purple.700, red.900 70%)'>
                         EVENTFLOW
                     </Text>
                 </GridItem>

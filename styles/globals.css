@@ -2,8 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: sans-serif;
 }
 html{
   max-height: 100%;
@@ -38,7 +37,7 @@ a {
   body {
     color: white;
     background: black;
-    /* color: #A4FFA4; */
+    /* color: #02ba7d; */
   }
 }
 
