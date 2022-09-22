@@ -23,7 +23,7 @@ const HeaderDescription = () => {
             <Image src='/images/headerImage.png' alt="eventflow-header-image" />
         </Box>
         <Flex justifyContent="space-evenly" w="50%" m="4% 25%">
-            <Image src="/Metamask-logo.png" alt="metamask-logo" width={200} height="50px" />
+            <Image src="/Metamask-logo.png" alt="metamask-logo" width={200} height="40px" mt="10px" />
             <Image src="/Primary Lockup Daemon Dark.png" alt="blockdaemon-logo" width={250} height="60px" />
             <Image src="/logo-red-on-white.png" alt="web3Bridge-logo" width={200} height="60px" />
         </Flex>
