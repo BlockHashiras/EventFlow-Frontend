@@ -1,7 +1,8 @@
 
 import React from 'react'
 import HeaderDescription from '../index-components/HeaderDescription'
-import { 
+import { IndexBody } from "../index-components/IndexBody"
+import {
   Box,
   Text
 } from '@chakra-ui/react'
@@ -21,10 +22,9 @@ const index = () => {
       <Box
       className='index-trend'
       w="100%"
-      height="100vh"
       color="purple.900"
       >
-
+        <IndexBody />
       </Box>
     </>
   )
