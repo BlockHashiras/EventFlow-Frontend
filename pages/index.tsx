@@ -1,7 +1,7 @@
 
 import React from 'react'
 import HeaderDescription from '../index-components/HeaderDescription'
-import { IndexBody } from "../index-components/IndexBody"
+import { Hiw, Latest, Trending } from "../index-components/IndexBody"
 import {
   Box,
   Text
@@ -24,7 +24,21 @@ const index = () => {
       w="100%"
       color="purple.900"
       >
-        <IndexBody />
+        <Trending />
+      </Box>
+      <Box
+      className='index-latest'
+      w="100%"
+      color="purple.900"
+      >
+        <Latest />
+      </Box>
+      <Box
+      className='index-hiw'
+      w="100%"
+      color="purple.900"
+      >
+        <Hiw />
       </Box>
     </>
   )
