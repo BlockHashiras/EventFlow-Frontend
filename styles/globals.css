@@ -3,6 +3,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: sans-serif;
+  background-color: white;
 }
 html{
   max-height: 100%;
@@ -70,6 +71,10 @@ a {
 .index-hiw {
   background-color: white;
   background-image:
-    radial-gradient(150% 150% at 50% 0%, #a4ffce, white 20%, 20%, transparent),
-    radial-gradient(circle at 100% 0%, #e0c0f8, white 20%);
+    radial-gradient(circle at 100% 0%, #e0c0f8, white 20%, 20%, transparent),
+    radial-gradient(150% 150% at 50% 100%, #c1ffde, white 20%);
+}
+.index-team{
+  background-color: white;
+  background-image: radial-gradient(150% 150% at 50% 0%, #c1ffde, white 20%);
 }

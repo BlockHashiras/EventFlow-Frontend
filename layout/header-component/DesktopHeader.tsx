@@ -11,7 +11,6 @@ export const DesktopHeader = () => {
     const [navbarScroll, setNavbarScroll] = useState(false)
 
     const changeNavBackground = () =>{
-        console.log(window.scrollY)
         window.scrollY > 40 ? setNavbarScroll(true) : setNavbarScroll(false)
     }
 
