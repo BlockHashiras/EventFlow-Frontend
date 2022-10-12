@@ -3,6 +3,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: sans-serif;
+  background-color: white;
 }
 html{
   max-height: 100%;
@@ -47,8 +48,33 @@ a {
 .index-header{
   background-color: white;
   background-image:
-   radial-gradient(circle at 0% 10%, #e7cbfc, white 20%, 40%, transparent),
-   radial-gradient(circle at 100% 50%, #e0c0f8, white 20%, 25%, transparent),
-   radial-gradient(100% 100% at 50% 5%, #A4FFA4, white 20%, 20%, transparent),
-   radial-gradient(150% 100% at 50% 90%, #A4FFA4, white 20%);
+    radial-gradient(circle at 0% 10%, #e7cbfc, white 20%, 40%, transparent),
+    radial-gradient(circle at 100% 50%, #e0c0f8, white 20%, 25%, transparent),
+    radial-gradient(100% 150% at 50% 5%, #a4ffce, white 25%, 20%, transparent),
+    radial-gradient(150% 200% at 50% 100%, #a4ffce, white 20%);
+}
+
+.index-trend {
+  background-color: white;
+  background-image:
+    radial-gradient(150% 150% at 50% 0%, #c1ffde, white 20%, 20%, transparent),
+    radial-gradient(circle at 0% 100%, #e0c0f8, white 20%, 20%, transparent),
+    radial-gradient(150% 200% at 50% 95%, #a4ffce, white 20%);
+}
+.index-latest {
+  background-color: white;
+  background-image:
+    radial-gradient(150% 150% at 50% 0%, #a4ffce, white 20%, 20%, transparent),
+    radial-gradient(circle at 0% 0%, #e0c0f8, white 20%, 20%, transparent),
+    radial-gradient(circle at 100% 100%, #e0c0f8, white 20%);
+}
+.index-hiw {
+  background-color: white;
+  background-image:
+    radial-gradient(circle at 100% 0%, #e0c0f8, white 20%, 20%, transparent),
+    radial-gradient(150% 150% at 50% 100%, #c1ffde, white 20%);
+}
+.index-team{
+  background-color: white;
+  background-image: radial-gradient(150% 150% at 50% 0%, #c1ffde, white 20%);
 }

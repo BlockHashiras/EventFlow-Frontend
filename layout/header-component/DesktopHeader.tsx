@@ -11,7 +11,6 @@ export const DesktopHeader = () => {
     const [navbarScroll, setNavbarScroll] = useState(false)
 
     const changeNavBackground = () =>{
-        console.log(window.scrollY)
         window.scrollY > 40 ? setNavbarScroll(true) : setNavbarScroll(false)
     }
 
@@ -29,7 +28,7 @@ export const DesktopHeader = () => {
              position="fixed"
              w="100%"
              zIndex={5}
-             sx={navbarScroll? {"backgroundColor": "white", "boxShadow": "0px 15px 50px -15px #111"}: {"backgroundColor": "transparent"}}
+             sx={navbarScroll? {"backgroundColor": "white", "boxShadow": "0px 0px 100px -20px #111"}: {"backgroundColor": "transparent"}}
             >
                 <GridItem colSpan={1} >
                     <Text letterSpacing="0.2rem" fontSize="2xl" fontFamily='Poppins' fontWeight="bold" py="0.2rem" backgroundClip="text" bgGradient='linear(to-br, purple.700, red.900 70%)'>
