@@ -9,6 +9,7 @@ import {
 import { BsTwitter, BsTelegram } from "react-icons/bs"
 import { FaDiscord } from "react-icons/fa"
 import { AiFillInstagram } from "react-icons/ai"
+import { RiLinkedinFill } from "react-icons/ri"
 
 export const Events = () => {
     const {isOpen, onClose, onOpen} = useDisclosure()
@@ -85,6 +86,7 @@ export const Community = () => {
                 <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<BsTelegram />}>Telegram</MenuItem>
                 <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<FaDiscord />}>Discord</MenuItem>
                 <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<AiFillInstagram />}>Instagram</MenuItem>
+                <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<RiLinkedinFill />}>LinkedIn</MenuItem>
             </MenuList>
         </Menu>
     )
