@@ -13,16 +13,23 @@ import { CgProfile } from "react-icons/cg";
 import { AiFillPieChart } from "react-icons/ai"
 import { IoMdMoon } from "react-icons/io"
 import { Community, Events, Resources } from "./NavItems";
+import Link from "next/link";
 
 
 export const Navbar = () => {
     return (
         <>
             <Flex justifyContent="space-between" color="purple.900" fontFamily='Lato' fontWeight="bold">
-                <Button className="nav-button"  variant='unstyled' mx="2" p="0 8px" fontFamily='Lato'>Home</Button>
-                <Button className="nav-button"  variant='unstyled' mx="2" p="0 8px">About</Button>
+                <Link href='/'>
+                    <Button className="nav-button"  variant='unstyled' mx="2" p="0 8px" fontFamily='Lato'>Home</Button>
+                </Link>
+                <Link href="/about">
+                    <Button className="nav-button"  variant='unstyled' mx="2" p="0 8px">About</Button>
+                </Link>
                 <Events />
+                <Link href='/'>
                 <Button className="nav-button"  variant='unstyled' mx="2" p="0 8px">Create</Button>
+                </Link>
                 <Resources />
                 <Community />
             </Flex>
