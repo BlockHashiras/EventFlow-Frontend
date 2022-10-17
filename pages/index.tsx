@@ -7,6 +7,7 @@ import {
   Text
 } from '@chakra-ui/react'
 
+
 const index = () => {
   return (
     <Box bg="white" fontFamily="Lato">
@@ -21,6 +22,7 @@ const index = () => {
       </Box>
       <Box
       className='index-trend'
+      id="trending"
       w="100%"
       color="purple.900"
       >
@@ -28,6 +30,7 @@ const index = () => {
       </Box>
       <Box
       className='index-latest'
+      id="latest"
       w="100%"
       color="purple.900"
       >

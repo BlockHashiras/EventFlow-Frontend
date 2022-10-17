@@ -13,7 +13,7 @@ export const Footer = () => {
     return (
     <Box
     w="100%"
-    sx={{"backgroundImage": "radial-gradient(circle at 0% 10%, #e0c0f8, white 20%, 20%, transparent), radial-gradient(150% 200% at 50% 50%, #c1ffde, white 20%)"}}
+    sx={{"backgroundImage": "radial-gradient(circle at 0% 0%, #e0c0f8, white 20%, 20%, transparent), radial-gradient(150% 200% at 50% 50%, #c1ffde, white 20%)"}}
     p="10% 0 2%"
     >
         <Grid
