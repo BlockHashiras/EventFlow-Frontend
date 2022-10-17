@@ -76,5 +76,17 @@ a {
 }
 .index-team{
   background-color: white;
-  background-image: radial-gradient(150% 150% at 50% 0%, #c1ffde, white 20%);
+  background-image:
+    radial-gradient(150% 150% at 50% 0%, #c1ffde, white 20%, 20%, transparent),
+    radial-gradient(circle at 0% 90%, #e0c0f8, white 20%);
+
+}
+
+/* About design */
+.about-wrapper{
+  background-image:
+    radial-gradient(circle at 100% 30%, #e0c0f8, white 20%, 20%, transparent),
+    radial-gradient(100% 100% at 0% 100%, #e0c0f8, white 20%, 20%, transparent),
+    radial-gradient(100% 150% at 50% 0%, #a4ffce, white 25%, 20%, transparent),
+    radial-gradient(circle at 50% 70%, #e0c0f8, white 20%);
 }
