@@ -90,3 +90,23 @@ a {
     radial-gradient(100% 150% at 50% 0%, #a4ffce, white 25%, 20%, transparent),
     radial-gradient(circle at 50% 70%, #e0c0f8, white 20%);
 }
+/* Event design */
+.event-wrapper{
+  background-image:
+    radial-gradient(100% 100% at 0% 100%, #e0c0f8, white 20%, 20%, transparent),
+    radial-gradient(100% 30% at 60% 0%, #a4ffce, white 20%, 20%, transparent),
+    radial-gradient(circle at 0% 0%, #e0c0f8, white 20%, 20%, transparent),
+    radial-gradient(circle at 100% 50%, #e0c0f8, white 20%, 20%, transparent),
+    radial-gradient(circle at 0% 50%, #e0c0f8, white 20%, 20%, transparent),
+    radial-gradient(circle at 50% 50%, #a4ffce, white 20%);
+}
+
+/* Portfolio design */
+.portfolio-wrapper, .profile-wrapper, .create-wrapper {
+  background-image:
+  radial-gradient(circle at 0% 0%, #e0c0f8, white 20%, 20%, transparent),
+  radial-gradient(circle at 100% 50%, #e0c0f8, white 20%, 20%, transparent),
+  radial-gradient(100% 100% at 60% 0%, #a4ffce, white 20%, 20%, transparent),
+  radial-gradient(100% 100% at 0% 100%, #e0c0f8, white 20%, 20%, transparent);
+}
+/* Upload design */

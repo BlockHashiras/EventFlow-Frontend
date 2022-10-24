@@ -12,13 +12,13 @@ export const MainHeader = () => {
     const [tabSize] = useMediaQuery("(min-width: 48em)")
     return (
         <>
-        {desktopSize ? 
+        {desktopSize ?
         <DesktopHeader /> :
         tabSize ?
         <TabHeader /> :
         <MobileHeader />
         }
-        </>     
+        </>
     );
 };
 

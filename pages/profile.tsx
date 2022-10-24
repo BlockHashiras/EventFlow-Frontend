@@ -13,42 +13,44 @@ import {
     Select,
     Heading
 } from "@chakra-ui/react";
+import { MdOutlineWindow } from "react-icons/md"
+import { AiOutlineTable } from "react-icons/ai"
+import { FaSearch } from "react-icons/fa"
 import { eventTicket } from "../index-components/data/Ticket";
 import { IoLocationSharp } from "react-icons/io5"
 import { ImPriceTag } from "react-icons/im"
 import { BsFillCalendarDateFill } from "react-icons/bs"
-import { MdOutlineWindow } from "react-icons/md"
-import { AiOutlineTable } from "react-icons/ai"
-import { FaSearch } from "react-icons/fa"
 
-const event = () => {
+
+const profile = () => {
     return (
         <Box
-        className="event-wrapper"
+        className="profile-wrapper"
         py="5rem"
         px="12rem"
         >
             <Box
-            bgImage="url('eventflow2.png')"
-            bgPosition="90%"
+            bgImage="url('profile.png')"
             h="20rem"
             borderRadius="15px"
+            bgPosition="center"
+            bgSize="cover"
             >
                 <Box
-                bgColor="blackAlpha.400"
+                bgColor="blackAlpha.600"
                 w="100%"
                 h="100%"
                 borderRadius="15px"
                 color="white"
                 boxShadow="xl"
                 >
-                    <Heading textAlign="center" fontFamily="Lato" py="6rem" letterSpacing="2px" fontSize="6xl">
-                        The Event Hub
-                    </Heading>
                 </Box>
+                <Flex justify='center' mt="-7rem">
+                    <Image alt="Kayzee" src="avatar.png" h="200px" w="200px" borderRadius="50%" />
+                </Flex>
             </Box>
             <Box
-            mt="4rem"
+            mt="10rem"
             >
                 <Flex gap={4}>
                     <Flex gap={2}>
@@ -79,9 +81,10 @@ const event = () => {
             pt="1rem"
             borderRadius="15px"
             >
-                <Grid templateColumns='repeat(5, 1fr)' gap={4}>
-                    { eventTicket.map((item, index)=>(
-                        <GridItem
+                <Grid templateColumns="repeat(5, 1fr)" gap={4}>
+                    { eventTicket.map((item, index)=>
+                    index < 10 ?
+                    <GridItem
                         key={index}
                         p='0.8rem'
                         bg="#c1ffdecf"
@@ -111,12 +114,12 @@ const event = () => {
                                     <Text>{item.date}</Text>
                                 </Flex>
                             </Box>
-                        </GridItem>
-                    ))}
+                        </GridItem> : ""
+                    )}
                 </Grid>
             </Box>
         </Box>
     );
 }
 
-export default event;
+export default profile;

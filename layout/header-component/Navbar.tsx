@@ -27,7 +27,7 @@ export const Navbar = () => {
                     <Button className="nav-button"  variant='unstyled' mx="2" p="0 8px">About</Button>
                 </Link>
                 <Events />
-                <Link href='/'>
+                <Link href='/create'>
                 <Button className="nav-button"  variant='unstyled' mx="2" p="0 8px">Create</Button>
                 </Link>
                 <Resources />
@@ -47,8 +47,12 @@ export const NavAuth = () => {
                 <Menu isOpen={isOpen}>
                     <MenuButton color="purple.900" mr='5' fontSize="3xl" onMouseEnter={onOpen} onMouseLeave={onClose}><CgProfile /></MenuButton>
                     <MenuList bg='purple.100' boxShadow="2xl" borderRadius="10px"  mt="-1.5" onMouseEnter={onOpen} onMouseLeave={onClose}>
-                        <MenuItem _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<CgProfile />}> Profile</MenuItem>
-                        <MenuItem _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<AiFillPieChart />}>Portfolio</MenuItem>
+                        <Link href="/profile">
+                            <MenuItem _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<CgProfile />}> Profile</MenuItem>
+                        </Link>
+                        <Link href="/portfolio">
+                            <MenuItem _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<AiFillPieChart />}>Portfolio</MenuItem>
+                        </Link>
                     </MenuList> 
                 </Menu>
                 <Button _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} variant='solid' p="0 20px" letterSpacing="4px" ml="5" bg='#02ba7d'>Connect</Button>

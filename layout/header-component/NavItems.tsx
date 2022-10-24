@@ -29,10 +29,10 @@ export const Events = () => {
                 Event
             </MenuButton>
             <MenuList bg='purple.100' boxShadow="2xl" borderRadius="10px" mt="-1.5" onMouseEnter={onOpen} onMouseLeave={onClose}>
-                <Link href="#trending">
+                <Link href="/#trending">
                     <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Top Event</MenuItem>
                 </Link>
-                <Link href="#latest">
+                <Link href="/#latest">
                     <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Latest Event</MenuItem>
                 </Link>
                 <Link href="/event">
