@@ -167,4 +167,11 @@ export const eventTicket = [
         date: "Dec 18TH, 2022",
         image: "https://newevolutiondesigns.com/images/freebies/nature-hd-background-preview-1.jpg"
     },
+    {
+        eventname: "HR Training for Beginners",
+        location: "Lagos State, Nigeria",
+        ticketPrice: "0.1 ETH",
+        date: "Dec 18TH, 2022",
+        image: "https://newevolutiondesigns.com/images/freebies/nature-hd-background-preview-1.jpg"
+    },
 ]

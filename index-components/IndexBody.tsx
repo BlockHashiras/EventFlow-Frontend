@@ -27,7 +27,6 @@ export const Trending = () => {
                     eventTicket.map((item, index) =>
                         index < 8 ?
                         <GridItem
-                        w='18rem'
                         h="25rem"
                         bg="#c1ffdecf"
                         key={index}
@@ -36,7 +35,7 @@ export const Trending = () => {
                         fontFamily='Lato'
                         boxShadow='lg'
                         >
-                            <Image borderRadius="8px" src={item.image} alt="ticket" w="16.5rem" h="16rem" />
+                            <Image borderRadius="8px" src={item.image} alt="ticket" h="16rem" />
                             <Box>
                                 <Text
                                 fontWeight="extrabold"
@@ -76,7 +75,6 @@ export const Latest = () => {
                     eventTicket.map((item, index) =>
                         index < 4 ?
                         <GridItem
-                        w='18rem'
                         h="25rem"
                         bg="#c1ffdecf"
                         key={index}
@@ -85,7 +83,7 @@ export const Latest = () => {
                         fontFamily='Lato'
                         boxShadow='lg'
                         >
-                            <Image borderRadius="8px" src={item.image} alt="ticket" w="16.5rem" h="16rem" />
+                            <Image borderRadius="8px" src={item.image} alt="ticket" h="16rem" />
                             <Box>
                                 <Text
                                 fontWeight="extrabold"
