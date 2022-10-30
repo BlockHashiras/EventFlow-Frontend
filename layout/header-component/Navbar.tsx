@@ -1,4 +1,5 @@
 import { useState  } from "react";
+import {ConnectButton} from '@rainbow-me/rainbowkit';
 import {
     Flex,
     Button,
@@ -15,8 +16,8 @@ import { IoMdMoon } from "react-icons/io"
 import { Community, Events, Resources } from "./NavItems";
 import Link from "next/link";
 
-
 export const Navbar = () => {
+
     return (
         <>
             <Flex justifyContent="space-between" color="purple.900" fontFamily='Lato' fontWeight="bold">
@@ -55,7 +56,16 @@ export const NavAuth = () => {
                         </Link>
                     </MenuList> 
                 </Menu>
-                <Button _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} variant='solid' p="0 20px" letterSpacing="4px" ml="5" bg='#02ba7d'>Connect</Button>
+                
+                {/* <Button _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} variant='solid' p="0 20px" letterSpacing="4px" ml="5" bg='#02ba7d'>Connect</Button> */}
+
+                <ConnectButton 
+                    label="Connect"
+                    accountStatus={"avatar"} // full, address, or avatar
+                    chainStatus={"icon"} // full, icon, or none
+                    showBalance={false} // true or false
+                />
+
             </Flex>
         </>
     )
