@@ -20,6 +20,7 @@ import { BsFillCalendarDateFill } from "react-icons/bs"
 import { MdOutlineWindow } from "react-icons/md"
 import { AiOutlineTable } from "react-icons/ai"
 import { FaSearch } from "react-icons/fa"
+import Link from "next/link";
 
 const event = () => {
     return (
@@ -81,37 +82,38 @@ const event = () => {
             >
                 <Grid templateColumns='repeat(5, 1fr)' gap={4}>
                     { eventTicket.map((item, index)=>(
-                        <GridItem
-                        key={index}
-                        p='0.8rem'
-                        bg="#c1ffdecf"
-                        borderRadius="8px"
-                        fontFamily='Lato'
-                        boxShadow="lg"
-                        >
-                            <Image borderRadius="8px" src={item.image} alt="event-ticket" h="16rem" />
-                            <Box>
-                                <Text
-                                fontWeight="extrabold"
-                                letterSpacing= "0.8px"
-                                my="0.4rem"
-                                >
-                                    {item.eventname}
-                                </Text>
-                                <Flex gap='2' p="0.6">
-                                    <Text pt="4px"><IoLocationSharp /></Text>
-                                    <Text>{item.location}</Text>
-                                </Flex>
-                                <Flex gap='2' p="0.6">
-                                    <Text pt="4px"><ImPriceTag /></Text>
-                                    <Text fontWeight='bold'>{item.ticketPrice}</Text>
-                                </Flex>
-                                <Flex gap='2' p="0.6">
-                                    <Text pt="4px"><BsFillCalendarDateFill /></Text>
-                                    <Text>{item.date}</Text>
-                                </Flex>
-                            </Box>
-                        </GridItem>
+                        <Link href={`buyTicket/${index}`} key={index}>
+                            <GridItem
+                            p='0.8rem'
+                            bg="#c1ffdecf"
+                            borderRadius="8px"
+                            fontFamily='Lato'
+                            boxShadow="lg"
+                            >
+                                <Image borderRadius="8px" src={item.image} alt="event-ticket" h="16rem" />
+                                <Box>
+                                    <Text
+                                    fontWeight="extrabold"
+                                    letterSpacing= "0.8px"
+                                    my="0.4rem"
+                                    >
+                                        {item.eventname}
+                                    </Text>
+                                    <Flex gap='2' p="0.6">
+                                        <Text pt="4px"><IoLocationSharp /></Text>
+                                        <Text>{item.location}</Text>
+                                    </Flex>
+                                    <Flex gap='2' p="0.6">
+                                        <Text pt="4px"><ImPriceTag /></Text>
+                                        <Text fontWeight='bold'>{item.ticketPrice}</Text>
+                                    </Flex>
+                                    <Flex gap='2' p="0.6">
+                                        <Text pt="4px"><BsFillCalendarDateFill /></Text>
+                                        <Text>{item.date}</Text>
+                                    </Flex>
+                                </Box>
+                            </GridItem>
+                        </Link>
                     ))}
                 </Grid>
             </Box>

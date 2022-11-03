@@ -110,3 +110,12 @@ a {
   radial-gradient(100% 100% at 0% 100%, #e0c0f8, white 20%, 20%, transparent);
 }
 /* Upload design */
+
+/* buy ticket design */
+.buy-ticket-wrapper{
+  background-image:
+  radial-gradient(100% 100% at 0% 100%, #e0c0f8, white 20%, 20%, transparent),
+  radial-gradient(100% 100% at 60% 0%, #a4ffce, white 20%, 20%, transparent),
+  radial-gradient(circle at 0% 0%, #e0c0f8, white 20%, 20%, transparent),
+  radial-gradient(circle at 100% 50%, #e0c0f8, white 20%, 20%, transparent);
+}
