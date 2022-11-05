@@ -12,12 +12,15 @@
     "@chakra-ui/react": "^2.3.2",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@rainbow-me/rainbowkit": "^0.7.4",
+    "ethers": "^5.7.2",
     "formik": "^2.2.9",
     "framer-motion": "^6",
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.4.0"
+    "react-icons": "^4.4.0",
+    "wagmi": "^0.7.10"
   },
   "devDependencies": {
     "@svgr/webpack": "^6.3.1",
