@@ -1,16 +1,71 @@
-import { Box, Button, color, Flex, Input, Text} from "@chakra-ui/react";
+import { Box, Button, color, Flex, Input, Textarea, Text} from "@chakra-ui/react";
+import { useContractWrite } from "wagmi";
+import useForm from './Hooks/useForm';
+import eventFlow_abi from "./abi/EventFlow.json"
+import { useState } from "react";
 
-const create = () => {
-    const validateEventName = (value: any) => {
-        let error
-        if(!value){
-            error = "Event name is required"
-        }
-        return error
+// interface IuseForm  {
+//     values: any,
+//     errors: any,
+//     handleChange: any,
+//     handleSubmit: any
+// };
+
+function create()  {
+
+    const eventAddress = "0x7a7B6453DfacC5d101c4259f471927CEBfF9C87b"
+    const [eventValues, setEventValues] = useState<any>({
+        description:'',
+        location:'',
+        image:'',
+        datetime:'',
+        title:'',
+        price:''
+    })
+
+    const [eventErrors, setEventErrors] = useState<any>({
+        description:'',
+        location:'',
+        image:'',
+        datetime:'',
+        title:'',
+        price:''
+    })
+    
+
+
+    //Final submit function
+    const onsubmit = () => {
+
+        console.log("Callback function when form is submitted!");
+        console.log("Form Values ", values);
+        setEventValues(values)
+        setEventErrors(errors)
+        eventWrite?.(values);
     }
-    const onsubmit = async (e: any) => {
-        console.log("submit")
-    }
+
+    //Custom hook call
+    const {handleChange, values, errors, handleSubmit} = useForm(onsubmit);
+
+    const {
+        data: eventData,
+        write: eventWrite,
+        isLoading: eventLoading
+    } = useContractWrite({
+        mode: 'recklesslyUnprepared',
+        addressOrName: eventAddress,
+        contractInterface: eventFlow_abi,
+        functionName: 'createEvent',
+        args:[
+            eventValues.description,
+            eventValues.location,
+            eventValues.image,
+            eventValues.datetime,
+            eventValues.title,
+            eventValues.price
+        ]
+    })
+
 
     return (
         <Box
@@ -26,7 +81,7 @@ const create = () => {
             borderRadius="15px"
             boxShadow="xl"
             >
-                <form onSubmit={onsubmit}>
+                <form onSubmit={handleSubmit} >
                     <Box
                     w="100%"
                     bg="purple.700"
@@ -35,9 +90,11 @@ const create = () => {
                     borderRadius="10px"
                     >
                         <Input
-                        isRequired={true}
+                        // isRequired={true}
                         type= "text"
-                        placeholder='Create Event'
+                        name="title"
+                        onChange={handleChange}
+                        placeholder='Event Title'
                         letterSpacing="tighter"
                         border="0"
                         p="1.5rem"
@@ -47,6 +104,9 @@ const create = () => {
                         focusBorderColor='transparent'
                         _placeholder={{fontFamily:"monospace", color: "#d6bcfaaa"}}
                         />
+                        {
+                            eventErrors.title && <h3>{eventErrors.title}</h3>
+                        }
                     </Box>
                     <Flex
                     gap={5}
@@ -57,9 +117,11 @@ const create = () => {
                         borderRadius="10px"
                         >
                             <Input
-                            isRequired={true}
+                            // isRequired={true}
                             type= "text"
-                            placeholder='Location'
+                            name="location"
+                            onChange={handleChange}
+                            placeholder='Event Location'
                             letterSpacing="tighter"
                             border="0"
                             p="1.5rem"
@@ -69,6 +131,9 @@ const create = () => {
                             focusBorderColor='transparent'
                             _placeholder={{fontFamily:"monospace", color: "#d6bcfaaa"}}
                             />
+                            {
+                                eventErrors.location && <h3>{eventErrors.location}</h3>
+                            }
                         </Box>
                         <Box
                         bg="purple.700"
@@ -76,9 +141,11 @@ const create = () => {
                         borderRadius="10px"
                         >
                             <Input
-                            isRequired={true}
+                            // isRequired={true}
                             type= "number"
-                            placeholder='Price'
+                            name="price"
+                            onChange={handleChange}
+                            placeholder='Ticket Price (in $)'
                             letterSpacing="tighter"
                             border="0"
                             p="1.5rem"
@@ -88,6 +155,9 @@ const create = () => {
                             focusBorderColor='transparent'
                             _placeholder={{fontFamily:"monospace", color: "#d6bcfaaa"}}
                             />
+                            {
+                                eventErrors.price && <h3>{eventErrors.price}</h3>
+                            }
                         </Box>
                     </Flex>
                     <Flex
@@ -99,8 +169,10 @@ const create = () => {
                         borderRadius="10px"
                         >
                             <Input
-                            isRequired={true}
-                            placeholder="Select Date and Time"
+                            // isRequired={true}
+                            name="datetime"
+                            onChange={handleChange}
+                            placeholder="Date and Time"
                             size="md"
                             type="date"
                             border="0"
@@ -111,6 +183,7 @@ const create = () => {
                             _placeholder={{fontFamily:"monospace", color: "#d6bcfaaa"}}
                             />
                         </Box>
+                        
                         <Box
                         bg="purple.700"
                         m="1rem 0 0 0"
@@ -127,11 +200,40 @@ const create = () => {
                                 >
                                     Upload Event Ticket
                                 </Text>
-                                <Input type="file" opacity="0" h="0" border="0" />
+                                <Input name="image" type="file" opacity="0" h="0" border="0" />
+                                {
+                                    eventErrors.title && <h3>{eventErrors.title}</h3>
+                                }
                             </label>
                         </Box>
                     </Flex>
-                    <Button fontSize="20px" _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} variant='solid' p="0 20px" letterSpacing="4px" bg='#02ba7d' w="100%" my={5}>Create Event</Button>
+                    <Box
+                    w="100%"
+                    bg="purple.700"
+                    m="1rem 0 0 0"
+                    p=""
+                    borderRadius="10px"
+                    >   
+                        <Textarea
+                            // value={value}
+                            name="description"
+                            onChange={handleChange}
+                            placeholder='Event Description'
+                            size='sm'
+                            letterSpacing="tighter"
+                            border="0"
+                            p="1.5rem"
+                            color="purple.100"
+                            fontSize="2xl"
+                            fontFamily="monospace"
+                            focusBorderColor='transparent'
+                            _placeholder={{fontFamily:"monospace", color: "#d6bcfaaa"}}
+                        />
+                        {
+                            eventErrors.title && <h3>{eventErrors.title}</h3>
+                        }
+                    </Box>
+                    <Button type="submit" fontSize="20px" _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} variant='solid' p="0 20px" letterSpacing="4px" bg='#02ba7d' w="100%" my={5}>Create Event</Button>
                 </form>
             </Box>
         </Box>
