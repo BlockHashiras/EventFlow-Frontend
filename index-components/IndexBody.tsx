@@ -26,10 +26,10 @@ export const Trending = () => {
                 {
                     eventTicket.map((item, index) =>
                         index < 8 ?
+                        <Link href={`buyTicket/${index}`} key={index}>
                         <GridItem
                         h="25rem"
                         bg="#c1ffdecf"
-                        key={index}
                         p='0.8rem'
                         borderRadius="8px"
                         fontFamily='Lato'
@@ -57,7 +57,9 @@ export const Trending = () => {
                                     <Text>{item.date}</Text>
                                 </Flex>
                             </Box>
-                        </GridItem> : ""
+                        </GridItem>
+                        </Link>
+                        : ""
                     )
                 }
             </Grid>
@@ -74,10 +76,10 @@ export const Latest = () => {
                 {
                     eventTicket.map((item, index) =>
                         index < 4 ?
-                        <GridItem
+                        <Link href={`buyTicket/${index}`} key={index}>
+                            <GridItem
                         h="25rem"
                         bg="#c1ffdecf"
-                        key={index}
                         p='0.8rem'
                         borderRadius="8px"
                         fontFamily='Lato'
@@ -105,7 +107,9 @@ export const Latest = () => {
                                     <Text>{item.date}</Text>
                                 </Flex>
                             </Box>
-                        </GridItem> : ""
+                        </GridItem>
+                        </Link>
+                        : ""
                     )
                 }
             </Grid>
