@@ -35,14 +35,14 @@ export const ConnectionButton = () => {
             {(() => {
               if (!connected) {
                 return (
-                  <Button hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} variant='solid' p="0 20px" letterSpacing="1px" ml="2"  bg='#02ba7d' onClick={openConnectModal} >
+                  <Button _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} variant='solid' p="0 20px" letterSpacing="1px" ml="2"  bg='#02ba7d' onClick={openConnectModal} >
                     Connect
                   </Button>
                 );
               }
               if (chain.unsupported) {
                 return (
-                  <Button  hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} variant='solid' p="0 20px" letterSpacing="1px" ml="2" bg='#DC4035' onClick={openChainModal} type="button">
+                  <Button  _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} variant='solid' p="0 20px" letterSpacing="1px" ml="2" bg='#DC4035' onClick={openChainModal} type="button">
                     Wrong network
                   </Button>
                 );
@@ -76,7 +76,7 @@ export const ConnectionButton = () => {
                     {chain.name}
                   </Button> */}
 
-                  <Button onClick={openAccountModal}  hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} variant='solid' p="0 20px" letterSpacing="1px" ml="2"  bg='#02ba7d'>
+                  <Button onClick={openAccountModal}  _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} variant='solid' p="0 20px" letterSpacing="1px" ml="2"  bg='#02ba7d'>
                     {account.displayName}
                     {/* {account.displayBalance
                       ? ` (${account.displayBalance})`
