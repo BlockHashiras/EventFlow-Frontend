@@ -22,7 +22,7 @@ import { ImPriceTag } from "react-icons/im"
 import { BsFillCalendarDateFill } from "react-icons/bs"
 
 
-const profile = () => {
+const Profile = () => {
     return (
         <Box
         className="profile-wrapper"
@@ -122,4 +122,4 @@ const profile = () => {
     );
 }
 
-export default profile;
+export default Profile;

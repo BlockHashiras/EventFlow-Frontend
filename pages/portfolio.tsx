@@ -16,7 +16,7 @@ import {
     Tr
 } from "@chakra-ui/react";
 import PortfolioHead from "../index-components/portfolio-component/PortfolioHead";
-const portfolio = () => {
+const Portfolio = () => {
     const networks = ["ETH", "USDT", "USDC", "MATIC", "SHIB", "UNI", "LINK", "CRO", "APE", "SAND", "MANA", "AAVE", "MKR"]
     return (
         <Box
@@ -70,4 +70,4 @@ const portfolio = () => {
     );
 }
 
-export default portfolio;
+export default Portfolio;

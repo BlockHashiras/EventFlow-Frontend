@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react'
 
 
-const index = () => {
+const Index = () => {
   return (
     <Box bg="white" fontFamily="Lato">
       <Box
@@ -50,4 +50,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

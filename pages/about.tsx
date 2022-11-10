@@ -12,7 +12,7 @@ import {
 import { aboutData } from "../about-component/data/aboutData";
 import Link from "next/link";
 
-const about = () => {
+const About = () => {
     return (
         <Box
         w="100%"
@@ -88,4 +88,4 @@ const about = () => {
     );
 }
 
-export default about;
+export default About;

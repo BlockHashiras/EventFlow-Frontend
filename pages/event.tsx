@@ -22,7 +22,7 @@ import { AiOutlineTable } from "react-icons/ai"
 import { FaSearch } from "react-icons/fa"
 import Link from "next/link";
 
-const event = () => {
+const Event = () => {
     return (
         <Box
         className="event-wrapper"
@@ -121,4 +121,4 @@ const event = () => {
     );
 }
 
-export default event;
+export default Event;

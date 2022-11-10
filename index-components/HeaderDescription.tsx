@@ -20,7 +20,7 @@ const HeaderDescription = () => {
                     <Button bg='#02ba7d'  _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} px="2rem">Discover</Button>
                 </Link>
                 <Link href="/create">
-                    <Button _hover={{"background": "#e7e8e7"}} _active={{"backgroundColor": "#cecece"}} boxShadow="0 0 5px #006040" px="2rem" >Create</Button>
+                    <Button _hover={{"background": "#ddf0dd"}} _active={{"backgroundColor": "#cecece"}} boxShadow="0 0 5px #006040" px="2rem" >Create</Button>
                 </Link>            </Flex>
         </Box>
         <Box w="50%" m="0 25%" boxSize='base:3xl md: xl'>

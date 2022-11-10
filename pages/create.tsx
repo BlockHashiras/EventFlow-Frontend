@@ -1,14 +1,64 @@
-import { Box, Button, color, Flex, Input, Text} from "@chakra-ui/react";
+import { Box, Button, Flex, Input, Text, useToast} from "@chakra-ui/react";
+import { useState } from "react";
+import { ChangeEvent } from "react";
 
-const create = () => {
-    const validateEventName = (value: any) => {
-        let error
-        if(!value){
-            error = "Event name is required"
+const Create = () => {
+    const[imageUpload, setImageUpload] = useState<File | null>(null);
+    const[previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+    const toast = useToast()
+
+    const onImageUploadChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const fileInput = e.target;
+
+        if(!fileInput.files){
+            toast({
+                title:'Error',
+                description: "No file was chosen",
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+                position: 'top'
+            })
+            return;
         }
-        return error
+
+        if(!fileInput.files || fileInput.files.length == 0){
+            toast({
+                title:'Error',
+                description: "File list is empty",
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+                position: 'top'
+            })
+            return;
+        }
+
+        const file = fileInput.files[0];
+
+        if(!file.type.startsWith("image")){
+            toast({
+                title:'Error',
+                description: "Please select a valid image",
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+                position: 'top'
+            })
+
+            return;
+        }
+
+        setImageUpload(file);
+        setPreviewUrl(URL.createObjectURL(file))
+
+
+        e.currentTarget.type = "text";
+        e.currentTarget.type = "file";
     }
-    const onsubmit = async (e: any) => {
+
+    const handlesubmit = async (e: any) => {
         console.log("submit")
     }
 
@@ -26,7 +76,7 @@ const create = () => {
             borderRadius="15px"
             boxShadow="xl"
             >
-                <form onSubmit={onsubmit}>
+                <form>
                     <Box
                     w="100%"
                     bg="purple.700"
@@ -97,6 +147,7 @@ const create = () => {
                         bg="purple.700"
                         m="1rem 0 0 0"
                         borderRadius="10px"
+                        w="61%"
                         >
                             <Input
                             isRequired={true}
@@ -122,20 +173,39 @@ const create = () => {
                                 fontSize="lg"
                                 color="purple.100"
                                 position="absolute"
-                                p="10px 35px"
+                                p="10px 40px"
                                 fontWeight="extrabold"
                                 >
                                     Upload Event Ticket
                                 </Text>
-                                <Input type="file" opacity="0" h="0" border="0" />
+                                <Input
+                                type="file"
+                                opacity="0"
+                                h="0"
+                                border="0"
+                                accept="image/*"
+                                onChange={onImageUploadChange}
+                                />
                             </label>
                         </Box>
                     </Flex>
-                    <Button fontSize="20px" _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} variant='solid' p="0 20px" letterSpacing="4px" bg='#02ba7d' w="100%" my={5}>Create Event</Button>
+                    <Button
+                    fontSize="20px"
+                    _hover={{"backgroundColor":"#049f6b"}}
+                    _active={{"backgroundColor": "#05b47a"}}
+                    variant='solid' p="0 20px"
+                    letterSpacing="4px"
+                    bg='#02ba7d'
+                    w="100%"
+                    my={5}
+                    onClick={handlesubmit}
+                    >
+                        Create Event
+                    </Button>
                 </form>
             </Box>
         </Box>
     );
 }
 
-export default create;
+export default Create;

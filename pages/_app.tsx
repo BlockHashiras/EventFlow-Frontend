@@ -6,7 +6,7 @@ import "../styles/globals.css"
 import MainLayout from '../layout/MainLayout';
 
 
-import {getDefaultWallets, RainbowKitProvider} from '@rainbow-me/rainbowkit';
+import {getDefaultWallets, RainbowKitProvider, Theme} from '@rainbow-me/rainbowkit';
 import {
   WagmiConfig,
   createClient,
@@ -14,17 +14,12 @@ import {
   chain,
 } from 'wagmi'
 
-// import { alchemyProvider } from 'wagmi/providers/alchemy'
-// import { infuraProvider } from 'wagmi/providers/infura'
 import { publicProvider } from 'wagmi/providers/public'
 
 const { chains, provider, webSocketProvider } = configureChains(
-  // chains we support 
-  [chain.mainnet, chain.goerli],
-  [
-  // alchemyProvider({apiKey: "fAO9lKh5UMDFsEW1eyT_AbY7kcppthXn"}), 
-  // infuraProvider({apiKey: "e92c38757159497d97aad034c8e59232"}), 
-  publicProvider()],
+  // chains we support
+  [chain.goerli, chain.mainnet],
+  [publicProvider()]
 );
 
 const {connectors} = getDefaultWallets({
@@ -33,7 +28,7 @@ const {connectors} = getDefaultWallets({
 });
 
 const client = createClient({
-  autoConnect: true,
+  autoConnect: false,
   connectors,
   provider,
   webSocketProvider,
@@ -49,7 +44,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           </MainLayout>
         </ChakraProvider>
       </RainbowKitProvider>
-      
+
     </WagmiConfig>
   )
 }
