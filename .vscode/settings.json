@@ -6,7 +6,11 @@
         "Formik",
         "Osun",
         "SHIB",
-        "Ugwu"
+        "UMDFs",
+        "Ugwu",
+        "Wagmi",
+        "handlesubmit",
+        "rainbowkit"
     ],
     "githubPullRequests.ignoredPullRequestBranches": [
         "main"
