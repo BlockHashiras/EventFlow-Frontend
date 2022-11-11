@@ -21,8 +21,59 @@ import { MdOutlineWindow } from "react-icons/md"
 import { AiOutlineTable } from "react-icons/ai"
 import { FaSearch } from "react-icons/fa"
 import Link from "next/link";
+import { useContractRead } from "wagmi";
+import { CONTRACT_ADDRESS } from "../component/constants"
+import EventFlow_ABI from "../abi/eventflow_abi.json"
+import { useEffect, useState } from "react";
 
 const Event = () => {
+
+
+    const {data: allEvents} = useContractRead({
+        addressOrName: CONTRACT_ADDRESS,
+        contractInterface: EventFlow_ABI.abi,
+        functionName: "getAllEvents"
+    })
+
+    const [uri, setUri] = useState("")
+    const [image, setImage] = useState("")
+
+
+
+    function makeURL(ipfsURI:string) {
+        return ipfsURI.replace(/^ipfs:\/\//, "https://dweb.link/ipfs/");
+    }
+
+
+    const hexToDecimal = (hex:any) => parseInt(hex, 16);
+
+    const epochToDate = (e:any) => {
+        const date = new Date(e*1000)
+
+        return date.toLocaleDateString("en-US")
+    }
+
+
+
+    useEffect(() => {
+        async function fetchIPFSJson(ipfsURI:string) {
+            const url = makeURL(ipfsURI);
+            const respond = await fetch(url);
+            const metadata = await respond.json()
+            const imageUrl = makeURL(metadata.image)
+            console.log(imageUrl, "see")
+
+            setImage(imageUrl)
+
+        }
+
+        fetchIPFSJson(uri)
+
+    }, [uri])
+
+
+
+
     return (
         <Box
         className="event-wrapper"
@@ -115,6 +166,45 @@ const Event = () => {
                             </GridItem>
                         </Link>
                     ))}
+                    {
+                        allEvents?.map((item, index)=>
+                            <Link href={`buyTicket/${index}`} key={index}>
+                                <>
+                                {setUri(item[4])}
+                                <GridItem
+                                p='0.8rem'
+                                bg="#c1ffdecf"
+                                borderRadius="8px"
+                                fontFamily='Lato'
+                                boxShadow="lg"
+                                >
+                                    <Image borderRadius="8px" src={image} alt="event-ticket" h="16rem" />
+                                    <Box>
+                                    <Text
+                                    fontWeight="extrabold"
+                                    letterSpacing= "0.8px"
+                                    my="0.4rem"
+                                    >
+                                        {item[1]}
+                                    </Text>
+                                    <Flex gap='2' p="0.6">
+                                        <Text pt="4px"><IoLocationSharp /></Text>
+                                        <Text>{item[3]}</Text>
+                                    </Flex>
+                                    <Flex gap='2' p="0.6">
+                                        <Text pt="4px"><ImPriceTag /></Text>
+                                        <Text fontWeight='bold'>{hexToDecimal(item[6]._hex)/1e18}</Text>
+                                    </Flex>
+                                    <Flex gap='2' p="0.6">
+                                        <Text pt="4px"><BsFillCalendarDateFill /></Text>
+                                        <Text>{epochToDate(item[5])}</Text>
+                                    </Flex>
+                                </Box>
+                                </GridItem>
+                                </>
+                            </Link>
+                        )
+                    }
                 </Grid>
             </Box>
         </Box>

@@ -1,10 +1,120 @@
 import { Box, Button, Flex, Input, Text, useToast} from "@chakra-ui/react";
 import { useState } from "react";
 import { ChangeEvent } from "react";
+import { NFT_STORAGE_KEY, CONTRACT_ADDRESS } from "../component/constants";
+import { NFTStorage } from "nft.storage";
+import { useAccount, useContractWrite, useWaitForTransaction } from "wagmi";
+import Eventflow_abi from "../abi/eventflow_abi.json"
+import { ethers } from "ethers";
+import Image from "next/image";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const Create = () => {
     const[imageUpload, setImageUpload] = useState<File | null>(null);
     const[previewUrl, setPreviewUrl] = useState<string | null>(null);
+    const [cid, setCid] = useState("")
+    const [eventTitle, setEventTitle] = useState("")
+    const [eventLocation, setEventLocation] = useState("")
+    const [eventPrice, setEventPrice] = useState("")
+    const [eventDate, setEventDate] = useState("")
+
+    const {address} = useAccount()
+
+
+    const storage = new NFTStorage({token: NFT_STORAGE_KEY})
+
+
+    console.log(cid, "cid")
+    console.log(eventDate, "date")
+
+
+
+    async function check(_name: string) {
+        let metadata;
+        if(imageUpload){
+                metadata = await storage.store({
+                name: _name,
+                description: "Eventflow ticket",
+                image: imageUpload
+            })
+        }
+        if(metadata){
+            setCid(metadata.url)
+        }
+
+        createEventWrite()
+
+    }
+
+    const {
+        data: createEventData,
+        write: createEventWrite,
+        isLoading: createEventLoader
+    } = useContractWrite({
+        mode: 'recklesslyUnprepared',
+        addressOrName: CONTRACT_ADDRESS,
+        contractInterface: Eventflow_abi.abi,
+        functionName: 'createEvent',
+        args: [
+            eventTitle,
+            "Eventflow ticket",
+            eventLocation,
+            cid,
+            Date.parse(eventDate),
+            ethers.utils.parseEther(eventPrice? eventPrice.toString(): "0"),
+            ethers.utils.parseEther("1000000")
+        ]
+
+    })
+
+    const {isLoading: createEventLoading } = useWaitForTransaction({
+        hash: createEventData?.hash,
+        onSuccess(){
+            toast({
+                title:'Successful',
+                description: "Event has been created successfully",
+                status: "success",
+                duration: 5000,
+                isClosable: true,
+                position: 'top'
+            })
+
+            console.log("vhg,kuv");
+
+        },
+        onError(data){
+            toast({
+                title:'Error',
+                description: "Event cannot be created",
+                status: "error",
+                duration: 5000,
+                isClosable: true,
+                position: 'top'
+            })
+            console.log(data)
+        }
+    })
+
+
+    const handleSubmit = (e:any) => {
+        e.preventDefault();
+
+        setCid("")
+        check(eventTitle)
+        toast({
+            title:'Notice',
+            description: "This may take a while, please be patient",
+            status: 'loading',
+            duration: 9000,
+            isClosable: true,
+            position: 'top'
+        })
+    }
+
+
+
+
+
 
     const toast = useToast()
 
@@ -58,9 +168,6 @@ const Create = () => {
         e.currentTarget.type = "file";
     }
 
-    const handlesubmit = async (e: any) => {
-        console.log("submit")
-    }
 
     return (
         <Box
@@ -96,6 +203,8 @@ const Create = () => {
                         fontFamily="monospace"
                         focusBorderColor='transparent'
                         _placeholder={{fontFamily:"monospace", color: "#d6bcfaaa"}}
+                        onChange={e => setEventTitle(e.target.value)}
+                        value={eventTitle}
                         />
                     </Box>
                     <Flex
@@ -109,7 +218,7 @@ const Create = () => {
                             <Input
                             isRequired={true}
                             type= "text"
-                            placeholder='Location'
+                            placeholder='Event Location'
                             letterSpacing="tighter"
                             border="0"
                             p="1.5rem"
@@ -118,6 +227,8 @@ const Create = () => {
                             fontFamily="monospace"
                             focusBorderColor='transparent'
                             _placeholder={{fontFamily:"monospace", color: "#d6bcfaaa"}}
+                            onChange={e => setEventLocation(e.target.value)}
+                            value={eventLocation}
                             />
                         </Box>
                         <Box
@@ -128,7 +239,7 @@ const Create = () => {
                             <Input
                             isRequired={true}
                             type= "number"
-                            placeholder='Price'
+                            placeholder='Ticket Price'
                             letterSpacing="tighter"
                             border="0"
                             p="1.5rem"
@@ -137,6 +248,8 @@ const Create = () => {
                             fontFamily="monospace"
                             focusBorderColor='transparent'
                             _placeholder={{fontFamily:"monospace", color: "#d6bcfaaa"}}
+                            onChange={e => setEventPrice(e.target.value)}
+                            value={eventPrice}
                             />
                         </Box>
                     </Flex>
@@ -160,6 +273,7 @@ const Create = () => {
                             color="purple.100"
                             focusBorderColor="transparent"
                             _placeholder={{fontFamily:"monospace", color: "#d6bcfaaa"}}
+                            onChange={e => setEventDate(e.target.value)}
                             />
                         </Box>
                         <Box
@@ -189,7 +303,9 @@ const Create = () => {
                             </label>
                         </Box>
                     </Flex>
-                    <Button
+                    {
+                        address?
+                        <Button
                     fontSize="20px"
                     _hover={{"backgroundColor":"#049f6b"}}
                     _active={{"backgroundColor": "#05b47a"}}
@@ -198,10 +314,61 @@ const Create = () => {
                     bg='#02ba7d'
                     w="100%"
                     my={5}
-                    onClick={handlesubmit}
+                    onClick={handleSubmit}
+                    disabled={createEventLoading || createEventLoader}
                     >
-                        Create Event
-                    </Button>
+                        {(createEventLoading || createEventLoader) ? "Loading" : "Create Event"}
+                    </Button>:
+                    <ConnectButton.Custom>
+                    {({
+                        account,
+                        chain,
+                        openAccountModal,
+                        openChainModal,
+                        openConnectModal,
+                        mounted,
+                    }) => {
+                        const ready = mounted;
+                        const connected =
+                        ready &&
+                        account &&
+                        chain
+
+                        return (
+                        <div
+                            {...(!ready && {
+                            'aria-hidden': true,
+                            'style': {
+                                opacity: 0,
+                                pointerEvents: 'none',
+                                userSelect: 'none',
+                            },
+                            })}
+                        >
+                            {(() => {
+                            if (!connected) {
+                                return (
+                                <Button
+                                fontSize="20px"
+                                _hover={{"backgroundColor":"#049f6b"}}
+                                _active={{"backgroundColor": "#05b47a"}}
+                                variant='solid' p="0 20px"
+                                letterSpacing="4px"
+                                bg='#02ba7d'
+                                w="100%"
+                                my={5}
+                                onClick={openConnectModal}
+                                type="button">
+                                    Connect
+                                </Button>
+                                );
+                            }
+                            })()}
+                        </div>
+                        );
+                    }}
+                </ConnectButton.Custom>
+                    }
                 </form>
             </Box>
         </Box>

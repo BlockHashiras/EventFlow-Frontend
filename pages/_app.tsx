@@ -4,6 +4,9 @@ import type { AppProps } from 'next/app'
 import { ChakraProvider } from "@chakra-ui/react";
 import "../styles/globals.css"
 import MainLayout from '../layout/MainLayout';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { Chain } from '@rainbow-me/rainbowkit';
+import { jsonRpcProvider } from "wagmi/providers/jsonRpc"
 
 
 import {getDefaultWallets, RainbowKitProvider, Theme} from '@rainbow-me/rainbowkit';
@@ -16,11 +19,20 @@ import {
 
 import { publicProvider } from 'wagmi/providers/public'
 
+const alchemyId = process.env.EVENTFLOW_ALCHEMY
+
+
+
 const { chains, provider, webSocketProvider } = configureChains(
-  // chains we support
-  [chain.goerli, chain.mainnet],
-  [publicProvider()]
-);
+  [chain.goerli],
+  [
+    jsonRpcProvider({
+      rpc: (chain) => ({
+        http: `https://eth-goerli.g.alchemy.com/v2/RcI6kAisXpQhOycB2S4qsvMuxTXZfR3P`,
+        webSocket: `wss://eth-goerli.g.alchemy.com/v2/RcI6kAisXpQhOycB2S4qsvMuxTXZfR3P`,
+      }),
+    }),
+  ]);
 
 const {connectors} = getDefaultWallets({
   appName: "EventFlow",
@@ -30,8 +42,7 @@ const {connectors} = getDefaultWallets({
 const client = createClient({
   autoConnect: false,
   connectors,
-  provider,
-  webSocketProvider,
+  provider
 })
 
 function MyApp({ Component, pageProps }: AppProps) {
