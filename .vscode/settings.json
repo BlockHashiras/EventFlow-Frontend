@@ -10,7 +10,11 @@
         "Ugwu",
         "Wagmi",
         "handlesubmit",
-        "rainbowkit"
+        "ipfs",
+        "ipfsuri",
+        "kayzee",
+        "rainbowkit",
+        "svgr"
     ],
     "githubPullRequests.ignoredPullRequestBranches": [
         "main"
