@@ -16,8 +16,32 @@ import {
     Tr
 } from "@chakra-ui/react";
 import PortfolioHead from "../index-components/portfolio-component/PortfolioHead";
-const Portfolio = () => {
-    const networks = ["ETH", "USDT", "USDC", "MATIC", "SHIB", "UNI", "LINK", "CRO", "APE", "SAND", "MANA", "AAVE", "MKR"]
+//@ts-ignore
+import CoinGecko from 'coingecko-api';
+const coinGeckoClient = new CoinGecko();
+
+const portfolio = (props:any) => {
+
+    const tokens = ["ETH", "USDT", "USDC", "MATIC", "SHIB", "UNI", "LINK", "CRO", "APE", "SAND", "MANA", "AAVE", "MKR"]
+        
+    const {data} = props.result;
+
+    //@ts-ignore
+    const formatPercent = (number) => {
+        return `${new Number(number).toFixed(2)}%`;
+    }
+    
+    //@ts-ignore
+    const formatDollar = (number, maximumSignificantDigits) => {
+        return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumSignificantDigits
+        }).format(number)
+    }
+
+    const filtered = data.filter((coin:any) => tokens.includes(`${coin.symbol.toUpperCase()}`))
+
     return (
         <Box
         className="portfolio-wrapper"
@@ -48,19 +72,42 @@ const Portfolio = () => {
                             <Thead>
                                 <Tr>
                                     <Th>Token</Th>
+                                    <Th>24H Change</Th>
                                     <Th>Price ($)</Th>
                                     <Th>Balance ($)</Th>
                                 </Tr>
                             </Thead>
                             <Tbody>
-                                {
-                                    networks.map((item, index)=>
-                                    <Tr key={index}>
-                                        <Td>{item}</Td>
-                                        <Td>0.00</Td>
-                                        <Td>0.00</Td>
-                                    </Tr>
-                                )}
+
+                                {//@ts-ignore
+                                filtered.map((coin) => {
+                                    
+                                    return(
+                                        <Tr key={coin.id}>
+                                            <Td>
+                                                <Flex alignItems="center">
+                                                    <img 
+                                                    src={coin.image} 
+                                                    style={{width: 25, height: 25, marginRight: 10}} 
+                                                    />
+                                                    <span>{coin.symbol.toUpperCase()}</span>
+                                                </Flex>
+                                            </Td>
+                                            <Td> 
+                                                <Text
+                                                color={coin.price_change_percentage_24h > 0 ? (
+                                                    'green.500' 
+                                                ) : 'red.500'}
+                                                >
+                                                {coin.price_change_percentage_24h > 0 ? `+ ${formatPercent(coin.price_change_percentage_24h)}` 
+                                                :formatPercent(coin.price_change_percentage_24h)}
+                                                </Text>
+                                            </Td>
+                                            <Td>{formatDollar(coin.current_price, 20)}</Td>
+                                            <Td>{formatDollar(coin.market_cap, 12)}</Td>
+                                        </Tr>
+                                    );
+                                } )}
                             </Tbody>
                         </Table>
                     </TableContainer>
@@ -70,4 +117,18 @@ const Portfolio = () => {
     );
 }
 
-export default Portfolio;
+export default portfolio;
+
+export async function getServerSideProps(context:any) {
+    const params = {
+        //@ts-ignore
+        order: CoinGecko.ORDER.MARKET_CAP_DESC
+    };
+    //@ts-ignore
+    const result = await coinGeckoClient.coins.markets({params});
+    return {
+        props: {
+            result
+        },
+    }
+}
