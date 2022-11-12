@@ -22,7 +22,8 @@ const coinGeckoClient = new CoinGecko();
 
 const portfolio = (props:any) => {
 
-    const networks = ["ETH", "USDT", "USDC", "MATIC", "SHIB", "UNI", "LINK", "CRO", "APE", "SAND", "MANA", "AAVE", "MKR"]
+    const tokens = ["ETH", "USDT", "USDC", "MATIC", "SHIB", "UNI", "LINK", "CRO", "APE", "SAND", "MANA", "AAVE", "MKR"]
+        
     const {data} = props.result;
 
     //@ts-ignore
@@ -39,7 +40,7 @@ const portfolio = (props:any) => {
         }).format(number)
     }
 
-    const filtered = data.filter((coin:any) => networks.includes(`${coin.symbol.toUpperCase()}`))
+    const filtered = data.filter((coin:any) => tokens.includes(`${coin.symbol.toUpperCase()}`))
 
     return (
         <Box
