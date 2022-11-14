@@ -52,6 +52,9 @@ export const NavAuth = () => {
                         <Link href="/profile">
                             <MenuItem _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<CgProfile />}> Profile</MenuItem>
                         </Link>
+                        <Link href="/creatorProfile">
+                            <MenuItem _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<CgProfile />}>Creator Profile</MenuItem>
+                        </Link>
                         <Link href="/portfolio">
                             <MenuItem _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<AiFillPieChart />}>Portfolio</MenuItem>
                         </Link>

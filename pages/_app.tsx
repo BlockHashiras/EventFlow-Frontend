@@ -17,8 +17,6 @@ import {
   chain,
 } from 'wagmi'
 
-import { publicProvider } from 'wagmi/providers/public'
-
 const alchemyId = process.env.EVENTFLOW_ALCHEMY
 
 

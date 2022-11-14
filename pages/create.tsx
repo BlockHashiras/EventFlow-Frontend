@@ -18,6 +18,8 @@ const Create = () => {
     const [eventPrice, setEventPrice] = useState("")
     const [eventDate, setEventDate] = useState("")
 
+    const toast = useToast()
+
     const {address} = useAccount()
 
 
@@ -116,7 +118,6 @@ const Create = () => {
 
 
 
-    const toast = useToast()
 
     const onImageUploadChange = (e: ChangeEvent<HTMLInputElement>) => {
         const fileInput = e.target;
