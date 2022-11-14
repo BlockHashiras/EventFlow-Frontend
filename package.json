@@ -13,6 +13,8 @@
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
     "@rainbow-me/rainbowkit": "^0.7.4",
+    "axios": "^1.1.3",
+    "coingecko-api": "^1.0.10",
     "dotenv": "^16.0.3",
     "ethers": "^5.7.2",
     "formik": "^2.2.9",
@@ -20,6 +22,7 @@
     "next": "12.3.0",
     "nft.storage": "^7.0.0",
     "react": "18.2.0",
+    "react-async": "^10.0.1",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
     "wagmi": "^0.6.8"
