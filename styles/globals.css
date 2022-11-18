@@ -3,7 +3,6 @@ body {
   padding: 0;
   margin: 0;
   font-family: sans-serif;
-  background-color: white;
 }
 html{
   max-height: 100%;
@@ -31,94 +30,77 @@ a {
   background-color: #9268f3;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-    /* color: #e7e8e7; */
-  }
-}
-
 
 /* Index design */
 
 .index-header{
-  background-color: white;
   background-image:
-    radial-gradient(circle at 0% 10%, #e7cbfc, white 20%, 40%, transparent),
-    radial-gradient(circle at 100% 50%, #e0c0f8, white 20%, 25%, transparent),
-    radial-gradient(100% 150% at 50% 5%, #a4ffce, white 25%, 20%, transparent),
-    radial-gradient(150% 200% at 50% 100%, #a4ffce, white 20%);
+    radial-gradient(circle at 0% 10%, #e7cbfc, transparent 20%, 40%, transparent),
+    radial-gradient(circle at 100% 50%, #e0c0f8, transparent 20%, 25%, transparent),
+    radial-gradient(100% 150% at 50% 5%, #a4ffce, transparent 25%, 20%, transparent),
+    radial-gradient(150% 200% at 50% 100%, #a4ffce, transparent 20%);
 }
 
 .index-trend {
-  background-color: white;
   background-image:
-    radial-gradient(150% 150% at 50% 0%, #c1ffde, white 20%, 20%, transparent),
-    radial-gradient(circle at 0% 100%, #e0c0f8, white 20%, 20%, transparent),
-    radial-gradient(150% 200% at 50% 95%, #a4ffce, white 20%);
+    radial-gradient(150% 150% at 50% 0%, #c1ffde, transparent 20%, 20%, transparent),
+    radial-gradient(circle at 0% 100%, #e0c0f8, transparent 20%, 20%, transparent),
+    radial-gradient(150% 200% at 50% 95%, #a4ffce, transparent 20%);
 }
 .index-latest {
-  background-color: white;
   background-image:
-    radial-gradient(150% 150% at 50% 0%, #a4ffce, white 20%, 20%, transparent),
-    radial-gradient(circle at 0% 0%, #e0c0f8, white 20%, 20%, transparent),
-    radial-gradient(circle at 100% 100%, #e0c0f8, white 20%);
+    radial-gradient(150% 150% at 50% 0%, #a4ffce, transparent 20%, 20%, transparent),
+    radial-gradient(circle at 0% 0%, #e0c0f8, transparent 20%, 20%, transparent),
+    radial-gradient(circle at 100% 100%, #e0c0f8, transparent 20%);
 }
 .index-hiw {
-  background-color: white;
   background-image:
-    radial-gradient(circle at 100% 0%, #e0c0f8, white 20%, 20%, transparent),
-    radial-gradient(150% 150% at 50% 100%, #c1ffde, white 20%);
+    radial-gradient(circle at 100% 0%, #e0c0f8, transparent 20%, 20%, transparent),
+    radial-gradient(150% 150% at 50% 100%, #c1ffde, transparent 20%);
 }
 .index-team{
-  background-color: white;
   background-image:
-    radial-gradient(150% 150% at 50% 0%, #c1ffde, white 20%, 20%, transparent),
-    radial-gradient(circle at 0% 90%, #e0c0f8, white 20%);
+    radial-gradient(150% 150% at 50% 0%, #c1ffde, transparent 20%, 20%, transparent),
+    radial-gradient(circle at 0% 90%, #e0c0f8, transparent 20%);
 
 }
 
 /* About design */
 .about-wrapper{
   background-image:
-    radial-gradient(circle at 100% 30%, #e0c0f8, white 20%, 20%, transparent),
-    radial-gradient(100% 100% at 0% 100%, #e0c0f8, white 20%, 20%, transparent),
-    radial-gradient(100% 150% at 50% 0%, #a4ffce, white 25%, 20%, transparent),
-    radial-gradient(circle at 50% 70%, #e0c0f8, white 20%);
+    radial-gradient(circle at 100% 30%, #e0c0f8, transparent 20%, 20%, transparent),
+    radial-gradient(100% 100% at 0% 100%, #e0c0f8, transparent 20%, 20%, transparent),
+    radial-gradient(100% 150% at 50% 0%, #a4ffce, transparent 25%, 20%, transparent),
+    radial-gradient(circle at 50% 70%, #e0c0f8, transparent 20%);
 }
 /* Event design */
 .event-wrapper{
   background-image:
-    radial-gradient(100% 100% at 0% 100%, #e0c0f8, white 20%, 20%, transparent),
-    radial-gradient(100% 30% at 60% 0%, #a4ffce, white 20%, 20%, transparent),
-    radial-gradient(circle at 0% 0%, #e0c0f8, white 20%, 20%, transparent),
-    radial-gradient(circle at 100% 50%, #e0c0f8, white 20%, 20%, transparent),
-    radial-gradient(circle at 0% 50%, #e0c0f8, white 20%, 20%, transparent),
-    radial-gradient(circle at 50% 50%, #a4ffce, white 20%);
+    radial-gradient(100% 100% at 0% 100%, #e0c0f8, transparent 20%, 20%, transparent),
+    radial-gradient(100% 30% at 60% 0%, #a4ffce, transparent 20%, 20%, transparent),
+    radial-gradient(circle at 0% 0%, #e0c0f8, transparent 20%, 20%, transparent),
+    radial-gradient(circle at 100% 50%, #e0c0f8, transparent 20%, 20%, transparent),
+    radial-gradient(circle at 0% 50%, #e0c0f8, transparent 20%, 20%, transparent),
+    radial-gradient(circle at 50% 50%, #a4ffce, transparent 20%);
 }
 
 /* Portfolio design */
 .portfolio-wrapper, .profile-wrapper, .create-wrapper {
   background-image:
-  radial-gradient(circle at 0% 0%, #e0c0f8, white 20%, 20%, transparent),
-  radial-gradient(circle at 100% 50%, #e0c0f8, white 20%, 20%, transparent),
-  radial-gradient(100% 100% at 60% 0%, #a4ffce, white 20%, 20%, transparent),
-  radial-gradient(100% 100% at 0% 100%, #e0c0f8, white 20%, 20%, transparent);
+  radial-gradient(circle at 0% 0%, #e0c0f8, transparent 20%, 20%, transparent),
+  radial-gradient(circle at 100% 50%, #e0c0f8, transparent 20%, 20%, transparent),
+  radial-gradient(100% 100% at 60% 0%, #a4ffce, transparent 20%, 20%, transparent),
+  radial-gradient(100% 100% at 0% 100%, #e0c0f8, transparent 20%, 20%, transparent);
 }
 /* Upload design */
 
 /* buy ticket design */
 .buy-ticket-wrapper{
   background:
-  radial-gradient(100% 100% at 0% 100%, #e0c0f8, white 20%, 20%, transparent),
-  radial-gradient(100% 100% at 60% 0%, #a4ffce, white 20%, 20%, transparent),
-  radial-gradient(circle at 0% 0%, #e0c0f8, white 20%, 20%, transparent),
-  radial-gradient(circle at 100% 50%, #e0c0f8, white 20%, 20%, transparent);
-  color: #ddf0dd
+  radial-gradient(100% 100% at 0% 100%, #e0c0f8, transparent 20%, 20%, transparent),
+  radial-gradient(100% 100% at 60% 0%, #a4ffce, transparent 20%, 20%, transparent),
+  radial-gradient(circle at 0% 0%, #e0c0f8, transparent 20%, 20%, transparent),
+  radial-gradient(circle at 100% 50%, #e0c0f8, transparent 20%, 20%, transparent);
 }
 /* XTkX6VmBsSxu-v2opnHp51RqBIpbaRmJUY4HN7q3wgqBB04G */
 

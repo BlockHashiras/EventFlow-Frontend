@@ -1,4 +1,4 @@
-import { 
+import {
     Menu,
     MenuItem,
     MenuList,
@@ -30,13 +30,13 @@ export const Events = () => {
             </MenuButton>
             <MenuList bg='purple.100' boxShadow="2xl" borderRadius="10px" mt="-1.5" onMouseEnter={onOpen} onMouseLeave={onClose}>
                 <Link href="/#trending">
-                    <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Top Event</MenuItem>
+                    <MenuItem bg='purple.100' color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Top Event</MenuItem>
                 </Link>
                 <Link href="/#latest">
-                    <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Latest Event</MenuItem>
+                    <MenuItem bg='purple.100' color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Latest Event</MenuItem>
                 </Link>
                 <Link href="/event">
-                    <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>All Events</MenuItem>
+                    <MenuItem bg='purple.100' color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>All Events</MenuItem>
                 </Link>
                 <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Event Near You</MenuItem>
             </MenuList>
@@ -51,21 +51,21 @@ export const Resources = () => {
             <MenuButton
                 mx="2"
                 _focusVisible={{"boxShadow": "0rem"}}
-                className="nav-button" 
-                variant='unstyled' 
-                p='0 8px' 
-                as={Button} 
-                onMouseEnter={onOpen} 
-                onMouseLeave={onClose} 
+                className="nav-button"
+                variant='unstyled'
+                p='0 8px'
+                as={Button}
+                onMouseEnter={onOpen}
+                onMouseLeave={onClose}
                 >
                 Resources
             </MenuButton>
             <MenuList bg='purple.100' boxShadow="2xl" borderRadius="10px" mt="-1.5" onMouseEnter={onOpen} onMouseLeave={onClose}>
-                <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Learn</MenuItem>
-                <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Blog</MenuItem>
-                <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Docs</MenuItem>
-                <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Newsletter</MenuItem>
-                <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Help Center</MenuItem>
+                <MenuItem bg="purple.100" color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Learn</MenuItem>
+                <MenuItem bg="purple.100" color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Blog</MenuItem>
+                <MenuItem bg="purple.100" color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Docs</MenuItem>
+                <MenuItem bg="purple.100" color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Newsletter</MenuItem>
+                <MenuItem bg="purple.100" color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Help Center</MenuItem>
             </MenuList>
         </Menu>
     )
@@ -79,21 +79,21 @@ export const Community = () => {
             <MenuButton
                 mx="2"
                 _focusVisible={{"boxShadow": "0rem"}}
-                className="nav-button" 
-                variant='unstyled' 
-                p='0 8px' 
-                as={Button} 
-                onMouseEnter={onOpen} 
-                onMouseLeave={onClose} 
+                className="nav-button"
+                variant='unstyled'
+                p='0 8px'
+                as={Button}
+                onMouseEnter={onOpen}
+                onMouseLeave={onClose}
                 >
                 Community
             </MenuButton>
             <MenuList bg='purple.100' boxShadow="2xl" borderRadius="10px" mt="-1.5" onMouseEnter={onOpen} onMouseLeave={onClose}>
-                <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<BsTwitter />}>Twitter</MenuItem>
-                <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<BsTelegram />}>Telegram</MenuItem>
-                <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<FaDiscord />}>Discord</MenuItem>
-                <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<AiFillInstagram />}>Instagram</MenuItem>
-                <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<RiLinkedinFill />}>LinkedIn</MenuItem>
+                <MenuItem bg='purple.100' color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<BsTwitter />}>Twitter</MenuItem>
+                <MenuItem bg='purple.100' color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<BsTelegram />}>Telegram</MenuItem>
+                <MenuItem bg='purple.100' color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<FaDiscord />}>Discord</MenuItem>
+                <MenuItem bg='purple.100' color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<AiFillInstagram />}>Instagram</MenuItem>
+                <MenuItem bg='purple.100' color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<RiLinkedinFill />}>LinkedIn</MenuItem>
             </MenuList>
         </Menu>
     )
