@@ -23,7 +23,7 @@ const alchemyId = process.env.EVENTFLOW_ALCHEMY
 
 
 const { chains, provider, webSocketProvider } = configureChains(
-  [chain.goerli],
+  [chain.goerli, chain.mainnet],
   [
     jsonRpcProvider({
       rpc: (chain) => ({
