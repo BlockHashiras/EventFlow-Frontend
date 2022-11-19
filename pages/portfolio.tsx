@@ -3,9 +3,6 @@ import {
     Flex,
     Heading,
     Image,
-    Select,
-    Skeleton,
-    SkeletonText,
     Table,
     TableCaption,
     TableContainer,
@@ -18,31 +15,33 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import PortfolioHead from "../index-components/portfolio-component/PortfolioHead";
-import {portfolioData} from "../index-components/portfolio-component/portfolioData.js";
 //@ts-ignore
 import CoinGecko from 'coingecko-api';
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import { BsInfoCircle } from "react-icons/bs";
+
+
+
 const coinGeckoClient = new CoinGecko();
-import { Async } from "react-async";
 
 const baseURL = "https://svc.blockdaemon.com/universal/v1/ethereum/goerli/account/";
-// https://svc.blockdaemon.com/universal/v1/ethereum/goerli/account/0x7Bd5f674D8D82286d10B75d63CF18ea3c45d2AbD?assets=ethereum/contract/0xCF814a38aD6Fa868c9c7c03694A6C5f4D8d076b6/erc-20
+
+
 
 const Portfolio = (props:any) => {
     const { address, isDisconnected } = useAccount();
-    const [netWorth, setnetWorth] = useState("0.00");
-    const [bal, setBal] = useState("0.00");
-    const [contractAddr, setContractAddr] = useState("")
+    const [networth, setNetworth] = useState<number>(0);
+
+    const [filter, setFilter] = useState<any[]>([])
 
     const tokens = ["ETH", "USDT", "USDC", "MATIC", "SHIB", "UNI", "LINK", "CRO", "APE", "SAND", "MANA", "AAVE", "MKR"]
 
     const {data} = props.result;
-    // console.log(contractAddr, "addresses");
 
 
     const tokenContracts = [
+    "",
     "0xCF814a38aD6Fa868c9c7c03694A6C5f4D8d076b6",
     "0x83D6ce4805E26737F941C3690fac9590496EEef4",
     "0x1a68cF7e5e91F34e579eD3CCA0c67A3f815A3efd",
@@ -54,11 +53,9 @@ const Portfolio = (props:any) => {
     "0x2533D5c34faC1250EFa59A56b973D6dD9ca26F6d",
     "0x19E0986B428413176747231c695F1921bd337383",
     "0x7080C562a74A2657F2F75C926C972cf296E1E6FF",
-    "0xC8a8A3d409A9264dbe0dc2d95a4a927A9eCFB2CE"];
+    "0xC8a8A3d409A9264dbe0dc2d95a4a927A9eCFB2CE",
+    ];
 
-    const getBalances:string[] = []
-
-    console.log(getBalances, "bal");
 
 
 
@@ -71,28 +68,6 @@ const Portfolio = (props:any) => {
     })
 
 
-    async function getTokenBalances(tokenAddress: string) {
-        if (isDisconnected) {
-            setBal("0.00")
-        }
-        else{
-            await reqInstance.get(`${baseURL}${address}?assets=ethereum/contract/${tokenAddress}/erc-20`).then((response) => {
-                getBalances.push(response.data[0].confirmed_balance);
-                console.log(response.data[0].confirmed_balance)
-
-                return response.data[0].confirmed_balance;
-            })
-        }
-    }
-
-
-    async function getBalance(){
-        for(let i=0; i < tokenContracts.length; i++){
-            getTokenBalances(tokenContracts[i])
-        }
-    }
-
-    getBalance()
 
 
 
@@ -110,22 +85,57 @@ const Portfolio = (props:any) => {
         }).format(number)
     }
 
+
+
+
     const filtered = data.filter((coin:any) => tokens.includes(`${coin.symbol.toUpperCase()}`))
 
 
-    for(let i=0; i < filtered.length; i++){
-        filtered[i].name = tokenContracts[i]
-    }
-
-    console.log(filtered, "check it")
 
 
 
 
-    // useEffect(() => {
-    //     getTokenBalances()
 
-    // }, []);
+
+    useEffect(() => {
+        async function getBalance(){
+            for(let i=0; i < tokenContracts.length; i++){
+                if(filtered[i].symbol == 'eth'){
+                    await reqInstance.get(`${baseURL}${address}`).then((response) => {
+                        filtered[i].name = response.data[0].confirmed_balance
+                    })
+                }
+                else{
+                    await reqInstance.get(`${baseURL}${address}?assets=ethereum/contract/${tokenContracts[i]}/erc-20`).then((response) => {
+
+                        filtered[i].name = response.data[0].confirmed_balance;
+
+                    })
+                }
+
+            }
+            setFilter(filtered)
+        }
+
+        getBalance()
+
+        function getNetworth(){
+            let sum:number = 0;
+
+            filter.forEach((item)=>{
+                sum += (Number(item.name)/1e18) * (item.current_price)
+            })
+
+            setNetworth(sum)
+
+        }
+
+
+        getNetworth()
+    },[filter])
+
+
+
     return (
         <Box
         className="portfolio-wrapper"
@@ -147,10 +157,10 @@ const Portfolio = (props:any) => {
                         Networth <br/>
                         <Text as="span" color="#7f739b" fontSize="0.9rem" fontWeight="light">
                             {isDisconnected ? <BsInfoCircle/> : ""}
-                            {isDisconnected ? "connect wallet to see networth and balance" : ""}
+                            {isDisconnected ? "connect wallet to see networth " : ""}
                         </Text>
                     </Heading>
-                    <Text fontSize="2xl" mt="1.5">${`${netWorth}`}</Text>
+                    <Text fontSize="2xl" mt="1.5">${`${networth.toLocaleString()}`}</Text>
                 </Box>
                 <Box>
                     <Heading as="h4" size="md" color="purple.800">Assets</Heading>
@@ -167,15 +177,15 @@ const Portfolio = (props:any) => {
                             </Thead>
                             <Tbody>
 
-                                {//@ts-ignore
-                                filtered.map((coin) => {
+                                {
+                                filter.map((coin:any) => {
                                     return(
                                         <Tr key={coin.id}>
                                             <>
                                             <Td>
                                                 <Flex alignItems="center">
                                                     <Image
-                                                    src={coin.image} 
+                                                    src={coin.image}
                                                     style={{width: 25, height: 25, marginRight: 10}}
                                                     alt="img"
                                                     />
@@ -185,7 +195,7 @@ const Portfolio = (props:any) => {
                                             <Td>
                                                 <Text
                                                 color={coin.price_change_percentage_24h > 0 ? (
-                                                    'green.500' 
+                                                    'green.500'
                                                 ) : 'red.500'}
                                                 >
                                                 {coin.price_change_percentage_24h > 0 ? `+ ${formatPercent(coin.price_change_percentage_24h)}` 
@@ -193,9 +203,7 @@ const Portfolio = (props:any) => {
                                                 </Text>
                                             </Td>
                                             <Td>{formatDollar(coin.current_price, 20)}</Td>
-                                            <Td>
-                                                
-                                            </Td>
+                                            <Td>${((Number(coin.name)/1e18) * (coin.current_price)).toLocaleString('en-US')}</Td>
                                             </>
 
                                         </Tr>
