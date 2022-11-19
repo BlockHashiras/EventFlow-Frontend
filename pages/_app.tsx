@@ -7,9 +7,10 @@ import MainLayout from '../layout/MainLayout';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { Chain } from '@rainbow-me/rainbowkit';
 import { jsonRpcProvider } from "wagmi/providers/jsonRpc"
+import theme from '../theme';
 
 
-import {getDefaultWallets, RainbowKitProvider, Theme} from '@rainbow-me/rainbowkit';
+import {getDefaultWallets, RainbowKitProvider} from '@rainbow-me/rainbowkit';
 import {
   WagmiConfig,
   createClient,
@@ -43,11 +44,11 @@ const client = createClient({
   provider
 })
 
-function MyApp({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={client}>
       <RainbowKitProvider chains={chains}>
-        <ChakraProvider>
+        <ChakraProvider theme={theme}>
           <MainLayout>
             <Component {...pageProps} />
           </MainLayout>
@@ -58,4 +59,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   )
 }
 
-export default MyApp
+export default App

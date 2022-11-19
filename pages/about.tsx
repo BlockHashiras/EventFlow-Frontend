@@ -7,12 +7,13 @@ import {
     Text,
     Image,
     Button,
-    Flex,
+    Flex
 } from "@chakra-ui/react";
 import { aboutData } from "../about-component/data/aboutData";
 import Link from "next/link";
 
 const About = () => {
+
     return (
         <Box
         w="100%"

@@ -10,7 +10,7 @@ import {
 
 const Index = () => {
   return (
-    <Box bg="white" fontFamily="Lato">
+    <Box fontFamily="Lato">
       <Box
       className='index-header'
       p='5rem 6rem 0rem 6rem'
