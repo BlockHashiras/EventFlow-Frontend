@@ -150,7 +150,12 @@ export const Trending = () => {
                         )
                     }
             </Grid>
-            <Flex justify='space-evenly' mt='2rem'><Button px="2rem" bg='#02ba7d'  _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}}>Explore</Button></Flex>
+            <Flex justify='space-evenly' mt='2rem'>
+                <Link href="/event">
+                    <Button px="2rem" bg='#02ba7d'  _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}}>Explore</Button>
+                </Link>
+
+            </Flex>
         </Box>
     );
 }
@@ -282,7 +287,12 @@ export const Latest = () => {
                         )
                     }
             </Grid>
-            <Flex justify='space-evenly' mt='2rem'><Button px="2rem" bg='#02ba7d'  _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}}>Explore</Button></Flex>
+            <Flex justify='space-evenly' mt='2rem'>
+                <Link href="/event">
+                    <Button px="2rem" bg='#02ba7d'  _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}}>Explore</Button>
+                </Link>
+
+            </Flex>
         </Box>
     )
 }
