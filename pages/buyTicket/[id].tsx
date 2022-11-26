@@ -190,7 +190,7 @@ const BuyTicket = () => {
                         {/* modal */}
                         <Modal isOpen={isOpen} onClose={onClose}>
                             <ModalOverlay />
-                            <ModalContent p="2rem 2rem 2rem 1rem" bg="#161f1a">
+                            <ModalContent p="2rem 2rem 2rem 1rem" bg="#161f1a" color="white">
                                 <ModalCloseButton />
                                 <ModalBody>
                                     <Text>
