@@ -43,25 +43,25 @@ a {
 
 .index-trend {
   background-image:
-    radial-gradient(150% 150% at 50% 0%, #c1ffde, transparent 20%, 20%, transparent),
-    radial-gradient(circle at 0% 100%, #e0c0f8, transparent 20%, 20%, transparent),
+    radial-gradient(150% 150% at 50% 0%, #a4ffce, transparent 20%, 20%, transparent),
+    radial-gradient(circle at 0% 50%, #e0c0f8, transparent 20%, 20%, transparent),
     radial-gradient(150% 200% at 50% 95%, #a4ffce, transparent 20%);
 }
 .index-latest {
   background-image:
     radial-gradient(150% 150% at 50% 0%, #a4ffce, transparent 20%, 20%, transparent),
-    radial-gradient(circle at 0% 0%, #e0c0f8, transparent 20%, 20%, transparent),
+    radial-gradient(circle at 0% 50%, #e0c0f8, transparent 20%, 20%, transparent),
     radial-gradient(circle at 100% 100%, #e0c0f8, transparent 20%);
 }
 .index-hiw {
   background-image:
-    radial-gradient(circle at 100% 0%, #e0c0f8, transparent 20%, 20%, transparent),
+    radial-gradient(circle at 98% 0%, #e0c0f8, transparent 20%, 20%, transparent),
     radial-gradient(150% 150% at 50% 100%, #c1ffde, transparent 20%);
 }
 .index-team{
   background-image:
     radial-gradient(150% 150% at 50% 0%, #c1ffde, transparent 20%, 20%, transparent),
-    radial-gradient(circle at 0% 90%, #e0c0f8, transparent 20%);
+    radial-gradient(circle at 0% 100%, #e0c0f8, transparent 20%);
 
 }
 
@@ -70,7 +70,7 @@ a {
   background-image:
     radial-gradient(circle at 100% 30%, #e0c0f8, transparent 20%, 20%, transparent),
     radial-gradient(100% 100% at 0% 100%, #e0c0f8, transparent 20%, 20%, transparent),
-    radial-gradient(100% 150% at 50% 0%, #a4ffce, transparent 25%, 20%, transparent),
+    radial-gradient(100% 100% at 50% 0%, #a4ffce, transparent 25%, 20%, transparent),
     radial-gradient(circle at 50% 70%, #e0c0f8, transparent 20%);
 }
 /* Event design */
@@ -101,6 +101,7 @@ a {
   radial-gradient(100% 100% at 60% 0%, #a4ffce, transparent 20%, 20%, transparent),
   radial-gradient(circle at 0% 0%, #e0c0f8, transparent 20%, 20%, transparent),
   radial-gradient(circle at 100% 50%, #e0c0f8, transparent 20%, 20%, transparent);
+  color: #eefef6;
 }
 /* XTkX6VmBsSxu-v2opnHp51RqBIpbaRmJUY4HN7q3wgqBB04G */
 

@@ -17,8 +17,8 @@ export const Footer = () => {
     p="10% 0 2%"
     >
         <Grid
-        w="70%"
-        mx="15%"
+        w={{lg: "90%",xl:"70%"}}
+        mx={{lg: "5%",xl:"15%"}}
         templateColumns='repeat(5, 1fr)'
         gap={5}
         fontFamily='Lato'

@@ -27,7 +27,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 
-const Profile = () => {
+const CreatorProfile = () => {
     const {data: allEvents} = useContractRead({
         address: CONTRACT_ADDRESS,
         abi: EventFlow_ABI.abi,
@@ -63,7 +63,6 @@ const Profile = () => {
             const respond = await fetch(url);
             const metadata = await respond.json()
             const imageUrl = makeURL(metadata.image)
-            console.log(imageUrl, "see")
 
             setImage(imageUrl)
 
@@ -79,7 +78,7 @@ const Profile = () => {
         <Box
         className="profile-wrapper"
         py="5rem"
-        px="12rem"
+        px={{lg: "5rem", xl: "12rem"}}
         >
             <Box
             bgImage="url('eventflow2.png')"
@@ -133,7 +132,7 @@ const Profile = () => {
             pt="1rem"
             borderRadius="15px"
             >
-                <Grid templateColumns="repeat(5, 1fr)" gap={4}>
+                <Grid templateColumns="repeat(3, 1fr)" gap={4}>
                     { eventTicket.map((item, index)=>
                     index < 10 ?
                     <GridItem
@@ -213,4 +212,4 @@ const Profile = () => {
     );
 }
 
-export default Profile;
+export default CreatorProfile;

@@ -191,12 +191,12 @@ const Create = () => {
     return (
         <Box
         className="create-wrapper"
-        px="12rem"
+        px={{lg: "5rem", xl: "12rem"}}
         py="5rem"
         >
             <Box
-            w="40%"
-            m="6rem 30%"
+            w="70%"
+            m="6rem 15%"
             p="2rem"
             bg="#c1ffdecf"
             borderRadius="15px"
@@ -336,7 +336,7 @@ const Create = () => {
                     onClick={handleSubmit}
                     disabled={createEventLoading || createEventLoader}
                     >
-                        {(createEventLoading || createEventLoader) ? "Loading..." : cid == ""? "Store Event Ticket" : "Create Event"}
+                        {(createEventLoading || createEventLoader) ? "Loading..." : cid == ""? "Store Ticket to IPFS" : "Create Event"}
                     </Button>:
                     <ConnectButton.Custom>
                     {({

@@ -24,11 +24,11 @@ export const DesktopHeader = () => {
             <Grid
             templateColumns='repeat(5, 1fr)'
             gap={4}
-            padding="0.5rem 12rem"
+            padding={{lg: "0.5rem 3rem", xl: "0.5rem 12rem"}}
             position="fixed"
             w="100%"
             zIndex={5}
-            sx={navbarScroll? {"backgroundColor": "white", "boxShadow": "0px 0px 100px -20px #111"}: {"backgroundColor": "transparent"}}
+            sx={navbarScroll? {"backgroundColor": "#eefef6", "boxShadow": "0px 0px 100px -20px #111"}: {"backgroundColor": "transparent"}}
             >
                 <GridItem colSpan={1} >
                     <Text letterSpacing="0.2rem" fontSize="2xl" fontFamily='Poppins' fontWeight="bold" py="0.2rem" backgroundClip="text" bgGradient='linear(to-br, purple.700, red.900 70%)'>

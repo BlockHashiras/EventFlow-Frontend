@@ -40,17 +40,6 @@ export const Trending = () => {
 
 
 
-
-
-
-
-    console.log(eventsData, "liku")
-
-
-
-
-
-
     useEffect(() => {
         if(getEvents){
             // @ts-ignore
@@ -64,7 +53,6 @@ export const Trending = () => {
             const url = makeURL(elementGotten[3]);
             const respond = await fetch(url);
             const metadata = await respond.json()
-            console.log(metadata, "lki")
             const imageUrl = makeURL(metadata.image)
             var eventsDisplay: [string, any, any, any, any] = [imageUrl, elementGotten[1], elementGotten[2], (hexToDecimal(elementGotten[5]._hex)/1e18), epochToDate(elementGotten[4].toString())]
             setEventsData(prev => [...prev, eventsDisplay])
@@ -88,12 +76,12 @@ export const Trending = () => {
 
 
     return (
-        <Box w="75%" mx='12.5%' p='2rem 4rem' color='purple.900'>
-            <Heading fontFamily="Lato" textAlign='center' mb='5%'>Trending Events</Heading>
-            <Grid templateColumns='repeat(4, 1fr)' gap={4} p='1rem'>
+        <Box w={{lg: "100%",xl:"75%"}} mx={{lg: "",xl:'12.5%'}} p='2rem 4rem' color='purple.900'>
+            <Heading fontFamily="Lato" textAlign='center' mb='5%' fontSize={{lg: "35px"}}>Trending Events</Heading>
+            <Grid templateColumns={{lg: 'repeat(3, 1fr)',xl:'repeat(4, 1fr)'}} gap={4} p='1rem'>
                 {
                     eventsData.map((item, index) =>
-                        index < 8 ?
+                        index < 6 ?
                         <Link href={`buyTicket/${index}`} key={index}>
                         <GridItem
                         h="25rem"
@@ -158,16 +146,6 @@ export const Latest = () => {
 
 
 
-
-
-
-    console.log(eventsData, "liku")
-
-
-
-
-
-
     useEffect(() => {
         if(getEvents){
             // @ts-ignore
@@ -181,7 +159,6 @@ export const Latest = () => {
             const url = makeURL(elementGotten[3]);
             const respond = await fetch(url);
             const metadata = await respond.json()
-            console.log(metadata, "lki")
             const imageUrl = makeURL(metadata.image)
             var eventsDisplay: [string, any, any, any, any] = [imageUrl, elementGotten[1], elementGotten[2], (hexToDecimal(elementGotten[5]._hex)/1e18), epochToDate(elementGotten[4].toString())]
             setEventsData(prev => [...prev, eventsDisplay])
@@ -204,12 +181,12 @@ export const Latest = () => {
 
 
     return(
-        <Box w="75%" mx='12.5%' p='2rem 4rem' color='purple.900'>
-            <Heading fontFamily="Lato" textAlign='center' mb='5%'>Latest Events</Heading>
-            <Grid templateColumns='repeat(4, 1fr)' gap={4} p='1rem'>
+        <Box w={{lg: "100%",xl:"75%"}} mx={{xl:'12.5%'}} p='2rem 4rem' color='purple.900'>
+            <Heading fontFamily="Lato" textAlign='center' mb='5%' fontSize="35px">Latest Events</Heading>
+            <Grid templateColumns={{lg: 'repeat(3, 1fr)',xl:'repeat(4, 1fr)'}} gap={4} p='1rem'>
                 {
                     eventsData.map((item, index) =>
-                        index < 4 ?
+                        index < 3 ?
                         <Link href={`buyTicket/${index}`} key={index}>
                             <GridItem
                         h="25rem"
@@ -258,8 +235,8 @@ export const Latest = () => {
 }
 export const Hiw = () => {
     return(
-        <Box w="75%" mx='12.5%' p='1rem 4rem' color='purple.900'>
-            <Heading fontFamily="Lato" textAlign='center' my='2%'>How it works</Heading>
+        <Box w={{lg: "100%",xl:"75%"}} mx={{xl:'12.5%'}} p='1rem 4rem' color='purple.900'>
+            <Heading fontFamily="Lato" textAlign='center' my='2%' fontSize="35px">How it works</Heading>
             <Grid templateColumns="repeat(3, 1fr)" gap={5} p="1rem">
                 {
                     HIWData.map((item, index) =>
@@ -280,7 +257,7 @@ export const Hiw = () => {
 
 export const Team = () => {
     return(
-        <Box w="70%" mx="15%" p="2rem 4rem" color="purple.900">
+        <Box w={{lg: "100%",xl:"75%"}} mx={{xl:'12.5%'}} p="2rem 4rem" color="purple.900">
             <Heading textAlign='center' my='5%'>Eventflow Team</Heading>
             <Grid templateColumns="repeat(3, 1fr)" gap={10} p="1rem">
                 {

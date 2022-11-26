@@ -2,7 +2,7 @@ import DesktopHeader from "./header-component/DesktopHeader";
 import MobileHeader from "./header-component/MobileHeader";
 import TabHeader from "./header-component/TabHeader";
 import {
-     useMediaQuery
+    useMediaQuery
 } from "@chakra-ui/react";
 
 

@@ -29,8 +29,8 @@ import Link from "next/link";
 
 const Profile = () => {
     const {data: allEvents} = useContractRead({
-        addressOrName: CONTRACT_ADDRESS,
-        contractInterface: EventFlow_ABI.abi,
+        address: CONTRACT_ADDRESS,
+        abi: EventFlow_ABI.abi,
         functionName: "getMyEvents"
     })
 
@@ -60,7 +60,6 @@ const Profile = () => {
             const respond = await fetch(url);
             const metadata = await respond.json()
             const imageUrl = makeURL(metadata.image)
-            console.log(imageUrl, "see")
 
             setImage(imageUrl)
 
@@ -76,7 +75,7 @@ const Profile = () => {
         <Box
         className="profile-wrapper"
         py="5rem"
-        px="12rem"
+        px={{lg: "5rem", xl: "12rem"}}
         >
             <Box
             bgImage="url('profile.png')"
@@ -130,7 +129,7 @@ const Profile = () => {
             pt="1rem"
             borderRadius="15px"
             >
-                <Grid templateColumns="repeat(5, 1fr)" gap={4}>
+                <Grid templateColumns="repeat(3, 1fr)" gap={4}>
                     { eventTicket.map((item, index)=>
                     index < 10 ?
                     <GridItem
@@ -165,7 +164,7 @@ const Profile = () => {
                             </Box>
                         </GridItem> : ""
                     )}
-                    {
+                    {/* {
                         allEvents?.map((item, index)=>
                             <Link href={`buyTicket/${index}`} key={index}>
                                 <>
@@ -203,7 +202,7 @@ const Profile = () => {
                                 </>
                             </Link>
                         )
-                    }
+                    } */}
                 </Grid>
             </Box>
         </Box>

@@ -23,16 +23,16 @@ export const Navbar = () => {
 
     return (
         <>
-            <Flex justifyContent="space-between" color="purple.900" fontFamily='Lato' fontWeight="bold">
+            <Flex color="purple.900" fontFamily='Lato' fontWeight="bold">
                 <Link href='/'>
-                    <Button className="nav-button"  variant='unstyled' mx="2" p="0 8px" fontFamily='Lato'>Home</Button>
+                    <Button className="nav-button"  variant='unstyled' p={{lg: "1px 8px"}}>Home</Button>
                 </Link>
                 <Link href="/about">
-                    <Button className="nav-button"  variant='unstyled' mx="2" p="0 8px">About</Button>
+                    <Button className="nav-button"  variant='unstyled' p={{lg: "1px 8px"}}>About</Button>
                 </Link>
                 <Events />
                 <Link href='/create'>
-                <Button className="nav-button"  variant='unstyled' mx="2" p="0 8px">Create</Button>
+                <Button className="nav-button"  variant='unstyled' p={{lg: "1px 8px"}}>Create</Button>
                 </Link>
                 <Resources />
                 <Community />
@@ -48,11 +48,11 @@ export const NavAuth = () => {
     return (
         <>
             <Flex justifyContent="space-between" pt="0.2rem" fontFamily='Lato' color="purple.900">
-                <Button variant='unstyled' mr='5' fontSize='3xl' onClick={toggleColorMode}>
+                <Button variant='unstyled' mr='1' fontSize={{lg: '2xl', xl: '3xl'}} onClick={toggleColorMode}>
                     {colorMode === 'light' ? <IoMdMoon /> : <BsFillSunFill />}
                 </Button>
                 <Menu isOpen={isOpen}>
-                    <MenuButton color="purple.900" mr='5' fontSize="3xl" onMouseEnter={onOpen} onMouseLeave={onClose}><CgProfile /></MenuButton>
+                    <MenuButton color="purple.900" mr='5' fontSize={{lg: '2xl', xl: '3xl'}} onMouseEnter={onOpen} onMouseLeave={onClose}><CgProfile /></MenuButton>
                     <MenuList bg='purple.100' boxShadow="2xl" borderRadius="10px"  mt="-1.5" onMouseEnter={onOpen} onMouseLeave={onClose}>
                         <Link href="/profile">
                             <MenuItem bg="purple.100" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}} icon={<CgProfile />}> Profile</MenuItem>
@@ -65,9 +65,6 @@ export const NavAuth = () => {
                         </Link>
                     </MenuList>
                 </Menu>
-
-                {/* <Button _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} variant='solid' p="0 20px" letterSpacing="4px" ml="5" bg='#02ba7d'>Connect</Button> */}
-                {/* connect button */}
                 <ConnectButton.Custom>
                     {({
                         account,
@@ -97,7 +94,7 @@ export const NavAuth = () => {
                             {(() => {
                             if (!connected) {
                                 return (
-                                <Button  bg='#02ba7d'  _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} px="2rem" onClick={openConnectModal} type="button">
+                                <Button  bg='#02ba7d'  _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} p={{lg: "1px 10px", xl: "1px 2rem"}} letterSpacing="2px" onClick={openConnectModal} type="button">
                                     Connect
                                 </Button>
                                 );
@@ -105,7 +102,7 @@ export const NavAuth = () => {
 
                             if (chain.unsupported) {
                                 return (
-                                <Button  bg='#02ba7d'  _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} px="2rem" onClick={openChainModal} type="button">
+                                <Button  bg='#02ba7d'  _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} p={{lg: "1px 10px", xl: "1px 2rem"}} letterSpacing="2px" onClick={openChainModal} type="button">
                                     Wrong network
                                 </Button>
                                 );
@@ -114,7 +111,7 @@ export const NavAuth = () => {
                             return (
                                 <div style={{ display: 'flex', gap: 12 }}>
                                 <Button
-                                    _hover={{"background": "#ddf0dd"}} _active={{"backgroundColor": "#cecece"}} boxShadow="0 0 5px #006040" px="2rem"
+                                    _hover={{"background": "#ddf0dd"}} _active={{"backgroundColor": "#cecece"}} boxShadow="0 0 5px #006040" p={{lg: "1px 10px", xl: "1px 2rem"}} letterSpacing="2px"
                                     onClick={openChainModal}
                                     style={{ display: 'flex', alignItems: 'center' }}
                                     type="button"
@@ -140,10 +137,10 @@ export const NavAuth = () => {
                                         )}
                                     </div>
                                     )}
-                                    {chain.name}
+                                    {/* {chain.name} */}
                                 </Button>
 
-                                <Button  bg='#02ba7d'  _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} px="2rem" onClick={openAccountModal} type="button">
+                                <Button  bg='#02ba7d'  _hover={{"backgroundColor": "#049f6b"}} _active={{"backgroundColor": "#05b47a"}} p={{lg: "1px 10px", xl: "1px 2rem"}} letterSpacing="2px" onClick={openAccountModal} type="button">
                                     {account.displayName}
                                 </Button>
                                 </div>

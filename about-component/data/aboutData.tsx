@@ -2,7 +2,7 @@ export const aboutData = [
     {
         headerImage: 'mission.png',
         headers: 'Mission',
-        desc: 'To decentralized event ticketting system and ensure security, transparency and proof of attendance over a long period of time',
+        desc: 'To decentralized event ticketting system and ensure security, transparency and proof of attendance over a long period.',
     },
     {
         headerImage: "vision.png",

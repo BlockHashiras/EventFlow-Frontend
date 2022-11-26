@@ -46,14 +46,6 @@ const Event = () => {
 
 
 
-
-    console.log(eventsData, "liku")
-
-
-
-
-
-
     useEffect(() => {
         if(getEvents){
             // @ts-ignore
@@ -67,7 +59,6 @@ const Event = () => {
             const url = makeURL(elementGotten[3]);
             const respond = await fetch(url);
             const metadata = await respond.json()
-            console.log(metadata, "lki")
             const imageUrl = makeURL(metadata.image)
             var eventsDisplay: [string, any, any, any, any] = [imageUrl, elementGotten[1], elementGotten[2], (hexToDecimal(elementGotten[5]._hex)/1e18), epochToDate(elementGotten[4].toString())]
             setEventsData(prev => [...prev, eventsDisplay])
@@ -97,7 +88,7 @@ const Event = () => {
         <Box
         className="event-wrapper"
         py="5rem"
-        px="12rem"
+        px={{lg: "5rem", xl: "12rem"}}
         >
             <Box
             bgImage="url('eventflow2.png')"
@@ -150,7 +141,7 @@ const Event = () => {
             pt="1rem"
             borderRadius="15px"
             >
-                <Grid templateColumns='repeat(5, 1fr)' gap={4}>
+                <Grid templateColumns='repeat(3, 1fr)' gap={4}>
                     {
                         eventsData.map((item, index)=>
                             <Link href={`buyTicket/${index}`} key={index}>

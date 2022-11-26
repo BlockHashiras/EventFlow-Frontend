@@ -17,11 +17,10 @@ export const Events = () => {
     return (
         <Menu isOpen={isOpen}>
             <MenuButton
-                mx="2"
                 _focusVisible={{"boxShadow": "0rem"}}
                 className="nav-button"
                 variant='unstyled'
-                p='0 8px'
+                p={{lg: "1px 8px"}}
                 as={Button}
                 onMouseEnter={onOpen}
                 onMouseLeave={onClose}
@@ -49,11 +48,10 @@ export const Resources = () => {
     return (
         <Menu isOpen={isOpen}>
             <MenuButton
-                mx="2"
                 _focusVisible={{"boxShadow": "0rem"}}
                 className="nav-button"
                 variant='unstyled'
-                p='0 8px'
+                p={{lg: "1px 8px"}}
                 as={Button}
                 onMouseEnter={onOpen}
                 onMouseLeave={onClose}
@@ -77,11 +75,10 @@ export const Community = () => {
     return (
         <Menu isOpen={isOpen}>
             <MenuButton
-                mx="2"
                 _focusVisible={{"boxShadow": "0rem"}}
                 className="nav-button"
                 variant='unstyled'
-                p='0 8px'
+                p={{lg: "1px 8px"}}
                 as={Button}
                 onMouseEnter={onOpen}
                 onMouseLeave={onClose}

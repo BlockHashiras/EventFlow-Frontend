@@ -22,12 +22,12 @@ const About = () => {
         p='5rem 6rem'
         >
             <Box
-            w='60%'
-            mx="20%"
+            w={{lg: '100%',xl:'60%'}}
+            mx={{xl: "20%"}}
             pt='4rem'
             >
-                <Heading fontFamily="Lato" fontSize="6xl" textAlign='center'>We are a team of passionate individuals</Heading>
-                <Grid templateColumns='repeat(3, 1fr)' gap={4} p="5rem 1rem">
+                <Heading fontFamily="Lato" fontSize={{lg: "45px ", xl:"50px"}} px={{lg: "8rem"}} textAlign='center'>We are a team of passionate individuals</Heading>
+                <Grid templateColumns='repeat(3, 1fr)' gap={4} p="3rem 1rem">
                     {
                         aboutData.map((item, index) =>
                             <GridItem
@@ -35,7 +35,7 @@ const About = () => {
                             >
                                 <Image m="1.5rem 40%" src={item.headerImage} alt="about-image" width="3rem" height="3rem"/>
                                 <Heading textAlign='center' as='h4' size="md">{item.headers}</Heading>
-                                <Text mt='1rem' textAlign="center" >{item.desc}</Text>
+                                <Text mt='1rem' textAlign="center" fontSize="15px">{item.desc}</Text>
                                 <Flex justify='space-evenly' mt='1rem'>
                                     {index == 0 ?
                                         <Link href="#mission">

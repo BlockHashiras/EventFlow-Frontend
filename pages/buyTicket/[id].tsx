@@ -140,12 +140,12 @@ const BuyTicket = () => {
         <Box
         className="buy-ticket-wrapper"
         py="10rem"
-        px="12rem"
+        px={{lg: "5rem", xl: "12rem"}}
         h="100vh"
         >
             <Box
-            width='50%'
-            mx= "25%"
+            width='70%'
+            mx= "15%"
             p="2rem"
             bg="#c1ffdecf"
             borderRadius="15px"
@@ -156,7 +156,7 @@ const BuyTicket = () => {
                 gap={8}
                 >
                     <Box>
-                        <Image borderRadius="8px" src={eventsData[0]} alt="event-ticket" h="16rem" />
+                        <Image borderRadius="8px" src={eventsData[0]} alt="event-ticket" h="16rem" w="20rem" />
                     </Box>
                     <Box>
                         <Flex gap='2' p="0.6" mb='5px'>
