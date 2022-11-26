@@ -16,7 +16,7 @@ export const eventTicket = [
     {
         eventname: "Life After School",
         location: "Kwara State, Nigeria",
-        ticketPrice: "Free",
+        ticketPrice: "0 ETH",
         date: "Oct 18TH, 2022",
         image: "https://newevolutiondesigns.com/images/freebies/nature-hd-background-1.jpg"
     },
@@ -30,14 +30,14 @@ export const eventTicket = [
     {
         eventname: "OAU Blockchain Conference",
         location: "Osun State, Nigeria",
-        ticketPrice: "Free",
+        ticketPrice: "0 ETH",
         date: "Nov 10TH, 2022",
         image: "https://newevolutiondesigns.com/images/freebies/nature-hd-background-4.jpg"
     },
     {
         eventname: "The Future of Data Security",
         location: "Lagos State, Nigeria",
-        ticketPrice: "Free",
+        ticketPrice: "0 ETH",
         date: "Nov 11TH, 2022",
         image: "https://w0.peakpx.com/wallpaper/42/267/HD-wallpaper-nature-scenery-scenery-nature.jpg"
     },
@@ -72,7 +72,7 @@ export const eventTicket = [
     {
         eventname: "Life After School",
         location: "Kwara State, Nigeria",
-        ticketPrice: "Free",
+        ticketPrice: "0 ETH",
         date: "Oct 18TH, 2022",
         image: "https://newevolutiondesigns.com/images/freebies/nature-hd-background-1.jpg"
     },
@@ -86,14 +86,14 @@ export const eventTicket = [
     {
         eventname: "OAU Blockchain Conference",
         location: "Osun State, Nigeria",
-        ticketPrice: "Free",
+        ticketPrice: "0 ETH",
         date: "Nov 10TH, 2022",
         image: "https://newevolutiondesigns.com/images/freebies/nature-hd-background-4.jpg"
     },
     {
         eventname: "The Future of Data Security",
         location: "Lagos State, Nigeria",
-        ticketPrice: "Free",
+        ticketPrice: "0 ETH",
         date: "Nov 11TH, 2022",
         image: "https://w0.peakpx.com/wallpaper/42/267/HD-wallpaper-nature-scenery-scenery-nature.jpg"
     },
@@ -128,7 +128,7 @@ export const eventTicket = [
     {
         eventname: "Life After School",
         location: "Kwara State, Nigeria",
-        ticketPrice: "Free",
+        ticketPrice: "0 ETH",
         date: "Oct 18TH, 2022",
         image: "https://newevolutiondesigns.com/images/freebies/nature-hd-background-1.jpg"
     },
@@ -142,14 +142,14 @@ export const eventTicket = [
     {
         eventname: "OAU Blockchain Conference",
         location: "Osun State, Nigeria",
-        ticketPrice: "Free",
+        ticketPrice: "0 ETH",
         date: "Nov 10TH, 2022",
         image: "https://newevolutiondesigns.com/images/freebies/nature-hd-background-4.jpg"
     },
     {
         eventname: "The Future of Data Security",
         location: "Lagos State, Nigeria",
-        ticketPrice: "Free",
+        ticketPrice: "0 ETH",
         date: "Nov 11TH, 2022",
         image: "https://w0.peakpx.com/wallpaper/42/267/HD-wallpaper-nature-scenery-scenery-nature.jpg"
     },

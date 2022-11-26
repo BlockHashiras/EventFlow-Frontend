@@ -29,10 +29,13 @@ import Link from "next/link";
 
 const Profile = () => {
     const {data: allEvents} = useContractRead({
-        addressOrName: CONTRACT_ADDRESS,
-        contractInterface: EventFlow_ABI.abi,
+        address: CONTRACT_ADDRESS,
+        abi: EventFlow_ABI.abi,
         functionName: "getMyEvents"
     })
+
+
+    console.log(allEvents, "fgjs")
 
     const [uri, setUri] = useState("")
     const [image, setImage] = useState("")
@@ -165,7 +168,7 @@ const Profile = () => {
                             </Box>
                         </GridItem> : ""
                     )}
-                    {
+                    {/* {
                         allEvents?.map((item, index)=>
                             <Link href={`buyTicket/${index}`} key={index}>
                                 <>
@@ -203,7 +206,7 @@ const Profile = () => {
                                 </>
                             </Link>
                         )
-                    }
+                    } */}
                 </Grid>
             </Box>
         </Box>
