@@ -1,18 +1,22 @@
 import { Box, Button, Flex, Input, Text, useToast} from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChangeEvent } from "react";
 import { NFT_STORAGE_KEY, CONTRACT_ADDRESS } from "../component/constants";
 import { NFTStorage } from "nft.storage";
-import { useAccount, useContractWrite, useWaitForTransaction } from "wagmi";
+import { useAccount, useContractWrite, usePrepareContractWrite, useWaitForTransaction } from "wagmi";
 import Eventflow_abi from "../abi/eventflow_abi.json"
 import { ethers } from "ethers";
-import Image from "next/image";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useRouter } from "next/router";
 
 const Create = () => {
+
+    const route = useRouter()
+
     const[imageUpload, setImageUpload] = useState<File | null>(null);
     const[previewUrl, setPreviewUrl] = useState<string | null>(null);
     const [cid, setCid] = useState("")
+    const [uri, setUri] = useState("")
     const [eventTitle, setEventTitle] = useState("")
     const [eventLocation, setEventLocation] = useState("")
     const [eventPrice, setEventPrice] = useState("")
@@ -25,89 +29,103 @@ const Create = () => {
 
     const storage = new NFTStorage({token: NFT_STORAGE_KEY})
 
+    console.log(cid, "sdll")
 
-    console.log(cid, "cid")
-    console.log(eventDate, "date")
+
+
 
 
 
     async function check(_name: string) {
         let metadata;
         if(imageUpload){
-                metadata = await storage.store({
+            metadata = await storage.store({
                 name: _name,
                 description: "Eventflow ticket",
                 image: imageUpload
             })
-        }
-        if(metadata){
-            setCid(metadata.url)
-        }
 
-        createEventWrite()
+            setCid(metadata.url)
+            eventCaller()
+        }
 
     }
 
-    const {
-        data: createEventData,
-        write: createEventWrite,
-        isLoading: createEventLoader
-    } = useContractWrite({
-        mode: 'recklesslyUnprepared',
-        addressOrName: CONTRACT_ADDRESS,
-        contractInterface: Eventflow_abi.abi,
+
+
+    async function eventCaller(){
+        if(cid !== ''){
+            createEventWrite?.()
+        }
+
+        console.log(cid, "cid")
+
+    }
+
+
+
+
+
+    const { config } = usePrepareContractWrite({
+        address: CONTRACT_ADDRESS,
+        abi: Eventflow_abi.abi,
         functionName: 'createEvent',
         args: [
             eventTitle,
-            "Eventflow ticket",
             eventLocation,
             cid,
             Date.parse(eventDate),
             ethers.utils.parseEther(eventPrice? eventPrice.toString(): "0"),
             ethers.utils.parseEther("1000000")
         ]
-
     })
 
-    const {isLoading: createEventLoading } = useWaitForTransaction({
+    const {
+        data: createEventData,
+        write: createEventWrite,
+        isLoading: createEventLoader,
+    } = useContractWrite(config)
+
+
+
+    const { isLoading: createEventLoading, isSuccess: createEventSuccess, isError: createEventError } = useWaitForTransaction({
         hash: createEventData?.hash,
-        onSuccess(){
-            toast({
-                title:'Successful',
-                description: "Event has been created successfully",
-                status: "success",
-                duration: 5000,
-                isClosable: true,
-                position: 'top'
-            })
-
-            console.log("vhg,kuv");
-
-        },
-        onError(data){
-            toast({
-                title:'Error',
-                description: "Event cannot be created",
-                status: "error",
-                duration: 5000,
-                isClosable: true,
-                position: 'top'
-            })
-            console.log(data)
-        }
     })
+
+    if(createEventSuccess){
+        toast({
+            title: 'Successful',
+            description: "Event has been created successfully",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+            position: 'top'
+        })
+
+        route.push("/")
+    }
+    if(createEventError){
+        toast({
+            title: 'Error',
+            description: "Event cannot be created",
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+            position: "top"
+        })
+    }
+
 
 
     const handleSubmit = (e:any) => {
         e.preventDefault();
-
         setCid("")
         check(eventTitle)
         toast({
             title:'Notice',
             description: "This may take a while, please be patient",
             status: 'loading',
-            duration: 9000,
+            duration: 15000,
             isClosable: true,
             position: 'top'
         })
@@ -195,7 +213,7 @@ const Create = () => {
                         <Input
                         isRequired={true}
                         type= "text"
-                        placeholder='Create Event'
+                        placeholder='Event Title'
                         letterSpacing="tighter"
                         border="0"
                         p="1.5rem"
@@ -318,14 +336,12 @@ const Create = () => {
                     onClick={handleSubmit}
                     disabled={createEventLoading || createEventLoader}
                     >
-                        {(createEventLoading || createEventLoader) ? "Loading" : "Create Event"}
+                        {(createEventLoading || createEventLoader) ? "Loading..." : cid == ""? "Store Event Ticket" : "Create Event"}
                     </Button>:
                     <ConnectButton.Custom>
                     {({
                         account,
                         chain,
-                        openAccountModal,
-                        openChainModal,
                         openConnectModal,
                         mounted,
                     }) => {
@@ -368,7 +384,7 @@ const Create = () => {
                         </div>
                         );
                     }}
-                </ConnectButton.Custom>
+                    </ConnectButton.Custom>
                     }
                 </form>
             </Box>
