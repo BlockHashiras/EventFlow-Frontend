@@ -2,12 +2,12 @@ export const aboutData = [
     {
         headerImage: 'mission.png',
         headers: 'Mission',
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        desc: 'To decentralized event ticketting system and ensure security, transparency and proof of attendance over a long period of time',
     },
     {
         headerImage: "vision.png",
         headers: 'Vision',
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        desc: 'Our Vision is to ensure Web3 adoption in event ticketting system all over the world without barrier or language difference',
     },
     {
         headerImage: "drive.png",
