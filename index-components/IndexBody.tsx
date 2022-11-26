@@ -23,54 +23,76 @@ import EventFlow_ABI from "../abi/eventflow_abi.json"
 import { useEffect, useState } from "react";
 
 export const Trending = () => {
-    const {data: allEvents} = useContractRead({
-        addressOrName: CONTRACT_ADDRESS,
-        contractInterface: EventFlow_ABI.abi,
-        functionName: "getAllEvents"
+
+
+
+
+    const { data:getEvents } = useContractRead({
+        address: CONTRACT_ADDRESS,
+        abi: EventFlow_ABI.abi,
+        functionName: 'getAllEvents',
     })
 
-    const [uri, setUri] = useState("")
-    const [image, setImage] = useState("")
+    const [eventsData, setEventsData] = useState<any[]>([])
 
 
 
-    function makeURL(ipfsURI:string) {
-        return ipfsURI.replace(/^ipfs:\/\//, "https://dweb.link/ipfs/");
-    }
 
 
-    const hexToDecimal = (hex:any) => parseInt(hex, 16);
 
-    const epochToDate = (e:any) => {
-        const date = new Date(e*1000)
 
-        return date.toLocaleDateString("en-US")
-    }
+
+
+
+    console.log(eventsData, "liku")
+
+
+
 
 
 
     useEffect(() => {
-        async function fetchIPFSJson(ipfsURI:string) {
-            const url = makeURL(ipfsURI);
+        if(getEvents){
+            // @ts-ignore
+                getEvents.map((item)=>{
+                    fetchIPFSJson(item)
+                })
+            }
+
+
+        async function fetchIPFSJson(elementGotten:any[]) {
+            const url = makeURL(elementGotten[3]);
             const respond = await fetch(url);
             const metadata = await respond.json()
+            console.log(metadata, "lki")
             const imageUrl = makeURL(metadata.image)
-            console.log(imageUrl, "see")
-
-            setImage(imageUrl)
-
+            var eventsDisplay: [string, any, any, any, any] = [imageUrl, elementGotten[1], elementGotten[2], (hexToDecimal(elementGotten[5]._hex)/1e18), epochToDate(elementGotten[4].toString())]
+            setEventsData(prev => [...prev, eventsDisplay])
         }
 
-        fetchIPFSJson(uri)
+        function makeURL(ipfsURI:string) {
+            return ipfsURI.replace(/^ipfs:\/\//, "https://dweb.link/ipfs/");
+        }
 
-    }, [uri])
+        const hexToDecimal = (hex:any) => parseInt(hex, 16);
+
+        const epochToDate = (e:any) => {
+            const date = new Date(Number(e))
+
+            return date.toDateString()
+        }
+
+    }, [getEvents])
+
+
+
 
     return (
         <Box w="75%" mx='12.5%' p='2rem 4rem' color='purple.900'>
             <Heading fontFamily="Lato" textAlign='center' mb='5%'>Trending Events</Heading>
             <Grid templateColumns='repeat(4, 1fr)' gap={4} p='1rem'>
                 {
-                    eventTicket.map((item, index) =>
+                    eventsData.map((item, index) =>
                         index < 8 ?
                         <Link href={`buyTicket/${index}`} key={index}>
                         <GridItem
@@ -81,26 +103,26 @@ export const Trending = () => {
                         fontFamily='Lato'
                         boxShadow='lg'
                         >
-                            <Image borderRadius="8px" src={item.image} alt="ticket" h="16rem" />
+                            <Image borderRadius="8px" src={item[0]} alt="ticket" h="16rem" />
                             <Box>
                                 <Text
                                 fontWeight="extrabold"
                                 letterSpacing= "0.8px"
                                 my="0.4rem"
                                 >
-                                    {item.eventname}
+                                    {item[1]}
                                 </Text>
                                 <Flex gap='2' p="0.6">
                                     <Text pt="4px"><IoLocationSharp /></Text>
-                                    <Text>{item.location}</Text>
+                                    <Text>{item[2]}</Text>
                                 </Flex>
                                 <Flex gap='2' p="0.6">
                                     <Text pt="4px"><ImPriceTag /></Text>
-                                    <Text fontWeight='bold'>{item.ticketPrice}</Text>
+                                    <Text fontWeight='bold'>{item[3].toLocaleString()} ETH</Text>
                                 </Flex>
                                 <Flex gap='2' p="0.6">
                                     <Text pt="4px"><BsFillCalendarDateFill /></Text>
-                                    <Text>{item.date}</Text>
+                                    <Text>{item[4]}</Text>
                                 </Flex>
                             </Box>
                         </GridItem>
@@ -108,47 +130,6 @@ export const Trending = () => {
                         : ""
                     )
                 }
-                {
-                        allEvents?.map((item, index)=>
-                            index < 8 ?
-                            <Link href={`buyTicket/${index}`} key={index}>
-                                <>
-                                {setUri(item[4])}
-                                <GridItem
-                                p='0.8rem'
-                                bg="#c1ffdecf"
-                                borderRadius="8px"
-                                fontFamily='Lato'
-                                boxShadow="lg"
-                                >
-                                    <Image borderRadius="8px" src={image} alt="event-ticket" h="16rem" />
-                                    <Box>
-                                    <Text
-                                    fontWeight="extrabold"
-                                    letterSpacing= "0.8px"
-                                    my="0.4rem"
-                                    >
-                                        {item[1]}
-                                    </Text>
-                                    <Flex gap='2' p="0.6">
-                                        <Text pt="4px"><IoLocationSharp /></Text>
-                                        <Text>{item[3]}</Text>
-                                    </Flex>
-                                    <Flex gap='2' p="0.6">
-                                        <Text pt="4px"><ImPriceTag /></Text>
-                                        <Text fontWeight='bold'>{hexToDecimal(item[6]._hex)/1e18}</Text>
-                                    </Flex>
-                                    <Flex gap='2' p="0.6">
-                                        <Text pt="4px"><BsFillCalendarDateFill /></Text>
-                                        <Text>{epochToDate(item[5])}</Text>
-                                    </Flex>
-                                </Box>
-                                </GridItem>
-                                </>
-                            </Link>
-                            : ""
-                        )
-                    }
             </Grid>
             <Flex justify='space-evenly' mt='2rem'>
                 <Link href="/event">
@@ -161,53 +142,73 @@ export const Trending = () => {
 }
 
 export const Latest = () => {
-    const {data: allEvents} = useContractRead({
-        addressOrName: CONTRACT_ADDRESS,
-        contractInterface: EventFlow_ABI.abi,
-        functionName: "getAllEvents"
+
+
+    const { data:getEvents } = useContractRead({
+        address: CONTRACT_ADDRESS,
+        abi: EventFlow_ABI.abi,
+        functionName: 'getAllEvents',
     })
 
-    const [uri, setUri] = useState("")
-    const [image, setImage] = useState("")
+    const [eventsData, setEventsData] = useState<any[]>([])
 
 
 
-    function makeURL(ipfsURI:string) {
-        return ipfsURI.replace(/^ipfs:\/\//, "https://dweb.link/ipfs/");
-    }
 
 
-    const hexToDecimal = (hex:any) => parseInt(hex, 16);
 
-    const epochToDate = (e:any) => {
-        const date = new Date(e*1000)
 
-        return date.toLocaleDateString("en-US")
-    }
+
+
+
+    console.log(eventsData, "liku")
+
+
+
 
 
 
     useEffect(() => {
-        async function fetchIPFSJson(ipfsURI:string) {
-            const url = makeURL(ipfsURI);
+        if(getEvents){
+            // @ts-ignore
+                getEvents.map((item)=>{
+                    fetchIPFSJson(item)
+                })
+            }
+
+
+        async function fetchIPFSJson(elementGotten:any[]) {
+            const url = makeURL(elementGotten[3]);
             const respond = await fetch(url);
             const metadata = await respond.json()
+            console.log(metadata, "lki")
             const imageUrl = makeURL(metadata.image)
-            console.log(imageUrl, "see")
-
-            setImage(imageUrl)
-
+            var eventsDisplay: [string, any, any, any, any] = [imageUrl, elementGotten[1], elementGotten[2], (hexToDecimal(elementGotten[5]._hex)/1e18), epochToDate(elementGotten[4].toString())]
+            setEventsData(prev => [...prev, eventsDisplay])
         }
 
-        fetchIPFSJson(uri)
+        function makeURL(ipfsURI:string) {
+            return ipfsURI.replace(/^ipfs:\/\//, "https://dweb.link/ipfs/");
+        }
 
-    }, [uri])
+        const hexToDecimal = (hex:any) => parseInt(hex, 16);
+
+        const epochToDate = (e:any) => {
+            const date = new Date(Number(e))
+
+            return date.toDateString()
+        }
+
+    }, [getEvents])
+
+
+
     return(
         <Box w="75%" mx='12.5%' p='2rem 4rem' color='purple.900'>
             <Heading fontFamily="Lato" textAlign='center' mb='5%'>Latest Events</Heading>
             <Grid templateColumns='repeat(4, 1fr)' gap={4} p='1rem'>
                 {
-                    eventTicket.map((item, index) =>
+                    eventsData.map((item, index) =>
                         index < 4 ?
                         <Link href={`buyTicket/${index}`} key={index}>
                             <GridItem
@@ -218,26 +219,26 @@ export const Latest = () => {
                         fontFamily='Lato'
                         boxShadow='lg'
                         >
-                            <Image borderRadius="8px" src={item.image} alt="ticket" h="16rem" />
+                            <Image borderRadius="8px" src={item[0]} alt="ticket" h="16rem" />
                             <Box>
                                 <Text
                                 fontWeight="extrabold"
                                 letterSpacing= "0.8px"
                                 my="0.4rem"
                                 >
-                                    {item.eventname}
+                                    {item[1]}
                                 </Text>
                                 <Flex gap='2' p="0.6">
                                     <Text pt="4px"><IoLocationSharp /></Text>
-                                    <Text>{item.location}</Text>
+                                    <Text>{item[2]}</Text>
                                 </Flex>
                                 <Flex gap='2' p="0.6">
                                     <Text pt="4px"><ImPriceTag /></Text>
-                                    <Text fontWeight='bold'>{item.ticketPrice}</Text>
+                                    <Text fontWeight='bold'>{item[3].toLocaleString()} ETH</Text>
                                 </Flex>
                                 <Flex gap='2' p="0.6">
                                     <Text pt="4px"><BsFillCalendarDateFill /></Text>
-                                    <Text>{item.date}</Text>
+                                    <Text>{item[4]}</Text>
                                 </Flex>
                             </Box>
                         </GridItem>
@@ -245,47 +246,6 @@ export const Latest = () => {
                         : ""
                     )
                 }
-                {
-                        allEvents?.map((item, index)=>
-                            index < 4 ?
-                            <Link href={`buyTicket/${index}`} key={index}>
-                                <>
-                                {setUri(item[4])}
-                                <GridItem
-                                p='0.8rem'
-                                bg="#c1ffdecf"
-                                borderRadius="8px"
-                                fontFamily='Lato'
-                                boxShadow="lg"
-                                >
-                                    <Image borderRadius="8px" src={image} alt="event-ticket" h="16rem" />
-                                    <Box>
-                                    <Text
-                                    fontWeight="extrabold"
-                                    letterSpacing= "0.8px"
-                                    my="0.4rem"
-                                    >
-                                        {item[1]}
-                                    </Text>
-                                    <Flex gap='2' p="0.6">
-                                        <Text pt="4px"><IoLocationSharp /></Text>
-                                        <Text>{item[3]}</Text>
-                                    </Flex>
-                                    <Flex gap='2' p="0.6">
-                                        <Text pt="4px"><ImPriceTag /></Text>
-                                        <Text fontWeight='bold'>{hexToDecimal(item[6]._hex)/1e18}</Text>
-                                    </Flex>
-                                    <Flex gap='2' p="0.6">
-                                        <Text pt="4px"><BsFillCalendarDateFill /></Text>
-                                        <Text>{epochToDate(item[5])}</Text>
-                                    </Flex>
-                                </Box>
-                                </GridItem>
-                                </>
-                            </Link>
-                            : ""
-                        )
-                    }
             </Grid>
             <Flex justify='space-evenly' mt='2rem'>
                 <Link href="/event">

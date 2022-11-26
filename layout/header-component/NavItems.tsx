@@ -38,7 +38,7 @@ export const Events = () => {
                 <Link href="/event">
                     <MenuItem bg='purple.100' color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>All Events</MenuItem>
                 </Link>
-                <MenuItem color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Event Near You</MenuItem>
+                <MenuItem bg='purple.100' color="purple.900" _hover={{"backgroundColor": "#B794F4"}} _focus={{"backgroundColor": "#B794F4"}}>Event Near You</MenuItem>
             </MenuList>
         </Menu>
     );
