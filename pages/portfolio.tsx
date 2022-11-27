@@ -39,7 +39,7 @@ const Portfolio = (props:any) => {
 
     const {data} = props.result;
 
-    console.log(data)
+    console.log(data, "my data")
 
 
     const tokenContracts = [
@@ -141,13 +141,12 @@ const Portfolio = (props:any) => {
     return (
         <Box
         className="portfolio-wrapper"
-        px="12rem"
+        px={{lg: "5rem", xl: "12rem"}}
         // h="100vh"
         pt="10rem"
         >
             <Box
-            w="80%"
-            mx="10%"
+            w="100%"
             bg="#c1ffdecf"
             borderRadius="15px"
             boxShadow="xl"
