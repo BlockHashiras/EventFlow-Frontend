@@ -39,6 +39,8 @@ const Portfolio = (props:any) => {
 
     const {data} = props.result;
 
+    console.log(data)
+
 
     const tokenContracts = [
     "",

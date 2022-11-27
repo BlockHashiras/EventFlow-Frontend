@@ -19,7 +19,7 @@ import {
     useToast
 } from "@chakra-ui/react"
 import Link from "next/link";
-import { useContractWrite, usePrepareContractWrite, useContractRead, useWaitForTransaction } from "wagmi";
+import { useContractWrite, usePrepareContractWrite, useContractRead, useWaitForTransaction, useAccount } from "wagmi";
 import { CONTRACT_ADDRESS } from "../../component/constants";
 import eventFlow_abi from "../../abi/eventflow_abi.json"
 import { ethers } from "ethers";
@@ -34,8 +34,11 @@ const BuyTicket = () => {
 
     const [eventsData, setEventsData] = useState<any[]>([])
     const toast = useToast()
+    const { address } = useAccount()
 
-    console.log(eventsData, "dl")
+    console.log(address, "lkji")
+
+
 
 
 
@@ -47,6 +50,8 @@ const BuyTicket = () => {
             PageID
         ]
     })
+
+    console.log(OneEvent, "jddsh")
 
 
 
@@ -84,6 +89,11 @@ const BuyTicket = () => {
 
     }, [OneEvent])
 
+    const amountToPay: string = eventsData[3]?.toLocaleString()
+
+    console.log(amountToPay, "payment fee");
+
+
     const { config } = usePrepareContractWrite({
         address: CONTRACT_ADDRESS,
         abi: eventFlow_abi.abi,
@@ -92,7 +102,8 @@ const BuyTicket = () => {
             PageID
         ],
         overrides: {
-            value: (eventsData[3]*1e18)
+            from: address,
+            value: ethers.utils.parseEther(amountToPay)
         }
     })
 
@@ -194,8 +205,9 @@ const BuyTicket = () => {
                                 <ModalCloseButton />
                                 <ModalBody>
                                     <Text>
-                                        You are about to buy this ticket for the speculated amount, on clicking proceed, the actual amount will be deducted from your wallet.
+                                        You are about to buy this ticket for <b>{eventsData[3]?.toLocaleString()} ETH</b>, on clicking proceed, the actual amount will be deducted from your wallet.
                                     </Text>
+                                    <Text>The total money that will be spent on purchasing this ticket with transaction fee is </Text>
                                 </ModalBody>
 
                                 <ModalFooter>
