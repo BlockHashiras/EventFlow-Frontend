@@ -1,37 +1,22 @@
-### View the page on vercel with the link below
+# EventFlow-FrontEnd
+The EventFlow-FrontEnd provides an interface for users of the EventFlow to interact with the EventFlowTicket contract which provides event management and NFT Ticketing services, this makes EventFlow an Event management and NFT Ticketing platform, and as an additional feature provides users a portfolio of their connected wallet address.
 
+Another bonus feature of EventFlow is it provides gas estimations for users, this allows users to know the amount of gas/fee they do spend for a transaction before performing the transaction.
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+In EventFlow you can:
+- Create events as a creator (Event Host).
+- Buy event tickets as an attendee of an event.
+- Find Event near you.
+- Track Top events to attend.
+- Own NFT by buying Event Tickets
+- As a bonus to users of EventFlow you automatically have profile of your connected wallet address
 
-## Getting Started
+Checkout the EventFlowTicket contract [here](https://github.com/BlockHashiras/EventFlow/blob/main/src/EventFlow.sol)
 
-First, run the development server:
+## Dipper Dive
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+When users create event having provided the neccesary data needed (ticket image, event title, event location, event date and time, ticket quantty and event price) the ticket image is stored on an ipfs while other data are stored in the contract storage. these data are retrieved on request.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Eventflow also provides account portfolio services, this gets you balance of tokens and cumulates that, giving you both the individual balance and a cummulated balance, such that you can easily know your accoount balance in one glance. 
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Checkout the EventFlowTicket contract README.md [here](https://github.com/BlockHashiras/EventFlow/blob/main/README.md) for more technical explanation of the bits of this contract.
