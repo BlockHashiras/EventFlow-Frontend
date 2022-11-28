@@ -81,17 +81,19 @@ const BuyTicket = (props:any) => {
     })
 
 
-    let reqInstance = axios.create({
-        headers: {
-            Authorization : `Bearer vJQcE8w64Azc1rpa4fIeVg4WcHAmaZejTuEQaTWILwzmZMHf`
-        }
-    })
+
 
 
 
 
 
     useEffect(() => {
+        let reqInstance = axios.create({
+            headers: {
+                Authorization : `Bearer vJQcE8w64Azc1rpa4fIeVg4WcHAmaZejTuEQaTWILwzmZMHf`
+            }
+        })
+
     if(OneEvent){
         // @ts-ignore
             fetchIPFSJson(OneEvent)
@@ -147,7 +149,7 @@ const BuyTicket = (props:any) => {
         overrides: {
             from: address,
             // @ts-ignore
-            value: OneEvent[5]?.toString()
+            value: ethers.utils.parseEther("0.1")
         }
     })
 
