@@ -149,7 +149,7 @@ const BuyTicket = (props:any) => {
         overrides: {
             from: address,
             // @ts-ignore
-            value: OneEvent[5]?.toString()
+            value: OneEvent?OneEvent[5].toString(): "0"
         }
     })
 
