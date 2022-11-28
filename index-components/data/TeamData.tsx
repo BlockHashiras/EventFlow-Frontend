@@ -1,7 +1,7 @@
 export const TeamData = [
     {
         bgImage: "https://newevolutiondesigns.com/images/freebies/nature-hd-background-1.jpg",
-        profilePics: "https://pbs.twimg.com/profile_images/1578773812266635266/JdTYggnV_400x400.jpg",
+        profilePics: "https://pbs.twimg.com/profile_images/1590621194595848193/rRaNB-8W_400x400.jpg",
         name: "Jesse Raymond",
         stack: "Smart Contract Developer",
         twitter: "https://twitter.com/Jesserc_"
