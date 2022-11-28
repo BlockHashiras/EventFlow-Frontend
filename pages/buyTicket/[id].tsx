@@ -88,12 +88,12 @@ const BuyTicket = (props:any) => {
 
 
     useEffect(() => {
+
         let reqInstance = axios.create({
             headers: {
                 Authorization : `Bearer vJQcE8w64Azc1rpa4fIeVg4WcHAmaZejTuEQaTWILwzmZMHf`
             }
         })
-
     if(OneEvent){
         // @ts-ignore
             fetchIPFSJson(OneEvent)
@@ -149,7 +149,7 @@ const BuyTicket = (props:any) => {
         overrides: {
             from: address,
             // @ts-ignore
-            value: ethers.utils.parseEther("0.1")
+            value: OneEvent[5]?.toString()
         }
     })
 
@@ -254,7 +254,7 @@ const BuyTicket = (props:any) => {
                                         You are about to buy this ticket for <b>{eventsData[3]?.toLocaleString()} ETH</b>, on clicking proceed the actual amount will be deducted from your wallet.
                                     </Text><br/><br/>
                                     {/* @ts-ignore */}
-                                    <Text>Ticket amount + transaction fee is: {(parseInt(OneEvent[5]._hex, 16)+ethereumFee)/ 1e18} ETH equivalent to ${(((parseInt(OneEvent[5]._hex, 16)+ethereumFee)/ 1e18)*data[1].current_price).toLocaleString()}</Text>
+                                    <Text>Ticket amount + transaction fee is: {OneEvent?(parseInt(OneEvent[5]?._hex, 16)+ethereumFee)/ 1e18: "0"} ETH equivalent to ${OneEvent?(((parseInt(OneEvent[5]._hex, 16)+ethereumFee)/ 1e18)*data[1].current_price).toLocaleString(): "0"}</Text>
                                 </ModalBody>
 
                                 <ModalFooter>
