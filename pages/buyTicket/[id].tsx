@@ -24,8 +24,33 @@ import { CONTRACT_ADDRESS } from "../../component/constants";
 import eventFlow_abi from "../../abi/eventflow_abi.json"
 import { ethers } from "ethers";
 import { useState, useEffect } from "react";
+//@ts-ignore
+import CoinGecko from 'coingecko-api';
+import axios from "axios";
 
-const BuyTicket = () => {
+
+
+const coinGeckoClient = new CoinGecko();
+
+export async function getServerSideProps(context:any) {
+    const params = {
+        //@ts-ignore
+        order: CoinGecko.ORDER.MARKET_CAP_DESC
+    };
+    //@ts-ignore
+    const result = await coinGeckoClient.coins.markets({params});
+    return {
+        props: {
+            result
+        },
+    }
+}
+
+
+
+
+
+const BuyTicket = (props:any) => {
 
     const { query } = useRouter()
     const PageID = Number(query.id)
@@ -33,10 +58,14 @@ const BuyTicket = () => {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const [eventsData, setEventsData] = useState<any[]>([])
+    const [ethereumFee, setEthereumFee] = useState<number>(0)
     const toast = useToast()
     const { address } = useAccount()
+    const {data} = props.result;
 
-    console.log(address, "lkji")
+    console.log(data[1].current_price, "current price")
+    console.log(ethereumFee, "dsgh");
+
 
 
 
@@ -51,7 +80,13 @@ const BuyTicket = () => {
         ]
     })
 
-    console.log(OneEvent, "jddsh")
+
+    let reqInstance = axios.create({
+        headers: {
+            Authorization : `Bearer vJQcE8w64Azc1rpa4fIeVg4WcHAmaZejTuEQaTWILwzmZMHf`
+        }
+    })
+
 
 
 
@@ -85,13 +120,21 @@ const BuyTicket = () => {
     }
 
 
+    async function getGasFee(){
+        await reqInstance.get(`https://svc.blockdaemon.com/universal/v1/ethereum/goerli/tx/estimate_fee`).then((response => {
+                    setEthereumFee(response.data.estimated_fees.fast.max_total_fee)
+            }))
+    }
+
+
+    getGasFee()
+
+
 
 
     }, [OneEvent])
 
-    const amountToPay: string = eventsData[3]?.toLocaleString()
 
-    console.log(amountToPay, "payment fee");
 
 
     const { config } = usePrepareContractWrite({
@@ -103,7 +146,8 @@ const BuyTicket = () => {
         ],
         overrides: {
             from: address,
-            value: ethers.utils.parseEther(amountToPay)
+            // @ts-ignore
+            value: OneEvent[5]?.toString()
         }
     })
 
@@ -205,9 +249,10 @@ const BuyTicket = () => {
                                 <ModalCloseButton />
                                 <ModalBody>
                                     <Text>
-                                        You are about to buy this ticket for <b>{eventsData[3]?.toLocaleString()} ETH</b>, on clicking proceed, the actual amount will be deducted from your wallet.
-                                    </Text>
-                                    <Text>The total money that will be spent on purchasing this ticket with transaction fee is </Text>
+                                        You are about to buy this ticket for <b>{eventsData[3]?.toLocaleString()} ETH</b>, on clicking proceed the actual amount will be deducted from your wallet.
+                                    </Text><br/><br/>
+                                    {/* @ts-ignore */}
+                                    <Text>Ticket amount + transaction fee is: {(parseInt(OneEvent[5]._hex, 16)+ethereumFee)/ 1e18} ETH equivalent to ${(((parseInt(OneEvent[5]._hex, 16)+ethereumFee)/ 1e18)*data[1].current_price).toLocaleString()}</Text>
                                 </ModalBody>
 
                                 <ModalFooter>
