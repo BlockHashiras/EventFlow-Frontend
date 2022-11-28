@@ -27,7 +27,7 @@ export const Footer = () => {
             <Text letterSpacing="0.2rem" fontSize="2xl" fontFamily='Poppins' fontWeight="bold" py="0.2rem" backgroundClip="text" bgGradient='linear(to-br, purple.700, red.900 70%)'>
                 EVENTFLOW
             </Text>
-            <Text pb="1rem" pt="0.5rem" color='purple.900'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+            <Text pb="1rem" pt="0.5rem" color='purple.900'>Discover latest and top events with no regional boundary, ticket that can be useful for future events</Text>
             <Text color='purple.900' fontWeight='extrabold' fontFamily="Lato" fontSize="18px" mb="0.5rem" >Join our Community</Text>
             <Flex gap={5}>
                 <BsTwitter />
