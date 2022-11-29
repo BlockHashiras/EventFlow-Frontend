@@ -13,7 +13,7 @@ In EventFlow you can:
 
 Checkout the EventFlowTicket contract [here](https://github.com/BlockHashiras/EventFlow/blob/main/src/EventFlow.sol)
 
-## Dipper Dive
+## Deeper Dive
 
 When users create event having provided the neccesary data needed (ticket image, event title, event location, event date and time, ticket quantty and event price) the ticket image is stored on an ipfs while other data are stored in the contract storage. these data are retrieved on request.
 
